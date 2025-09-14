@@ -1,0 +1,64 @@
+.Addjobform {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 40px;
+    max-width: 400px;
+    padding: 32px 24px;
+    background: linear-gradient(135deg, #fdf6e3 0%, #f5e9c6 100%);
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.Addjobform input,
+.Addjobform select,
+.Addjobform textarea {
+    padding: 10px;
+    border: 1px solid #d6cfc7;
+    border-radius: 6px;
+    font-size: 1rem;
+    background: #fff;
+    transition: border-color 0.2s;
+}
+
+.Addjobform input:focus,
+.Addjobform select:focus,
+.Addjobform textarea:focus {
+    border-color: #bfa76a;
+    outline: none;
+}
+
+.Addjobform button {
+    padding: 12px;
+    background: #bfa76a;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.Addjobform button:hover {
+    background: #a68c4a;
+}
+.page {
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.table-jobs {
+    width: 70%;
+    border-collapse: collapse;
+    margin: 40px;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(to right, #fff8e4, #f1d98f);
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
