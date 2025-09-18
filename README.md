@@ -1,1 +1,0 @@
-lezen mensen dit echt?
