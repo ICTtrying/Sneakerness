@@ -238,4 +238,14 @@ body {
   .menu li {
     padding: 0 20px;
   }
+
+    .menu li:first-child {
+        padding-left: 0;
+    }
+
+    .menu li:last-child {
+        padding-right: 0;
+    }
+
+    
 }
