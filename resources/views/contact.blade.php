@@ -1,48 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>verkoper pagina</title>
-</head>
-<body>
- <div class="max-w-lg mx-auto p-6 bg-white rounded shadow">
-    @if (session()->has('success'))
-        <div class="mb-4 p-3 bg-green-100 text-green-800 rounded">
-            {{ session('success') }}
-        </div>
-    @endif
-
-    <form wire:submit.prevent="submit" class="space-y-4">
+<x-layouts.app title="Contact" heading="Contact Us">
+    <form action="/contact" method="POST" class="space-y-6">
+        @csrf
         <div>
-            <label class="block text-gray-700">Naam</label>
-            <input type="text" wire:model="name" class="w-full border rounded px-3 py-2" />
-            @error('name') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+            <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Name</label>
+            <input type="text" name="name" id="name"
+                   class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm dark:bg-gray-700 dark:border-gray-600 dark:text-white" />
         </div>
-
         <div>
-            <label class="block text-gray-700">E-mail</label>
-            <input type="email" wire:model="email" class="w-full border rounded px-3 py-2" />
-            @error('email') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+            <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Email</label>
+            <input type="email" name="email" id="email"
+                   class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm dark:bg-gray-700 dark:border-gray-600 dark:text-white" />
         </div>
-
         <div>
-            <label class="block text-gray-700">Onderwerp</label>
-            <input type="text" wire:model="subject" class="w-full border rounded px-3 py-2" />
-            @error('subject') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+            <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Message</label>
+            <textarea name="message" id="message" rows="4"
+                      class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm dark:bg-gray-700 dark:border-gray-600 dark:text-white"></textarea>
         </div>
-
-        <div>
-            <label class="block text-gray-700">Bericht</label>
-            <textarea wire:model="message" rows="5" class="w-full border rounded px-3 py-2"></textarea>
-            @error('message') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-        </div>
-
-        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-            Verstuur
+        <button type="submit"
+                class="rounded-md bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700">
+            Send
         </button>
     </form>
-</div>
+</x-layouts.app>
 
-</body>
-</html>

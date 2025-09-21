@@ -1,11 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Blade;
 
-Route::get('verkoper', function () {
-    return view('verkoper');
-});
+Blade::component('layouts.app', 'layouts.app');
 
-Route::get('contact', function () {
-    return view('contact');
-});
+
+Route::view('/contact', 'contact');
+
+Route::view('/verkoper', 'verkoper.verkoper');
