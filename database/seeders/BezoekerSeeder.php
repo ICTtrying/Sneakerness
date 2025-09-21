@@ -5,32 +5,26 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class TicketSeeder extends Seeder
+class BezoekerSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        DB::table('Ticket')->insert([
+        DB::table('Bezoeker')->insert([
             [
-                'BezoekerId' => 1,
-                'EvenementId' => 1,
-                'PrijsId' => 1,
-                'AantalTickets' => 2,
-                'Datum' => now(),
+                'Naam' => 'Jan Jansen',
+                'Email' => 'jan.jansen@example.com',
                 'Isactief' => true,
-                'Opmerking' => 'Eerste ticket',
+                'Opmerking' => 'Eerste bezoeker',
                 'Datumaangemaakt' => now(),
                 'Datumgewijzigd' => now(),
             ],
             [
-                'BezoekerId' => 2,
-                'EvenementId' => 1,
-                'PrijsId' => 2,
-                'AantalTickets' => 1,
-                'Datum' => now(),
-                'Isactief' => true,
+                'Naam' => 'Piet Pietersen',
+                'Email' => 'piet.pietersen@example.com',
+                'Isactief' => false,
                 'Opmerking' => null,
                 'Datumaangemaakt' => now(),
                 'Datumgewijzigd' => now(),

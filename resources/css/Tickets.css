@@ -5,3 +5,24 @@
     min-height: 100vh;
 
 }
+
+.ticket-card {
+    background-color: #13536d;
+    border-radius: 8px;
+    width: 80%;
+    min-width: 400px;
+    padding: 20px;
+    border: 3px solid white;
+}
+
+.ticket-card:hover {
+    cursor: pointer;
+    background-color: #0e3f4d;
+    border-color: #00bcd4;
+}
+
+.event-name-card {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
