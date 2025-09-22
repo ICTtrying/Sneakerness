@@ -40,9 +40,9 @@
       </div>
       <div class="hidden lg:flex lg:gap-x-12">
         <a href="/" class="text-lg font-semibold text-white">Home</a>
-        <a href="/stands" class="text-lg font-semibold text-white">Stands</a>
-        <a href="/tickets" class="text-lg font-semibold text-white">Tickets</a>
-        <a href="/events" class="text-lg font-semibold text-white">Events</a>
+        <a href="/Stands" class="text-lg font-semibold text-white">Stands</a>
+        <a href="/Tickets" class="text-lg font-semibold text-white">Tickets</a>
+        <a href="/Events" class="text-lg font-semibold text-white">Events</a>
       </div>
       <div class="hidden lg:flex lg:flex-1 lg:justify-end">
         <a href="#" class="text-sm/6 font-semibold text-white">Log in <span aria-hidden="true">&rarr;</span></a>
@@ -67,10 +67,10 @@
             <div class="mt-6 flow-root">
               <div class="-my-6 divide-y divide-white/10">
                 <div class="space-y-2 py-6">
-                  <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:bg-white/5">Home</a>
-                  <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:bg-white/5">Feature</a>
-                  <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:bg-white/5">Tickets</a>
-                  <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:bg-white/5">Events</a>
+                  <a href="/" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:bg-white/5">Home</a>
+                  <a href="/Stands" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:bg-white/5">Stands</a>
+                  <a href="/Tickets" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:bg-white/5">Tickets</a>
+                  <a href="/Events" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:bg-white/5">Events</a>
                 </div>
                 <div class="py-6">
                   <a href="#" class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-white hover:bg-white/5">Log in</a>
