@@ -109,20 +109,21 @@ INSERT INTO Verkoper (Naam, SpecialeStatus, VerkooptSoort, StandType, Dagen, Opm
 -- 7. Stand
 CREATE TABLE Stand (
     id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    VerkoperId BIGINT UNSIGNED NOT NULL,
     StandType VARCHAR(50) NOT NULL,
     Prijs DECIMAL(10,2) NOT NULL CHECK (Prijs >= 0),
     VerhuurdStatus TINYINT(1) NOT NULL DEFAULT 0 CHECK (VerhuurdStatus IN (0,1)),
     Isactief TINYINT(1) NOT NULL DEFAULT 1 CHECK (Isactief IN (0,1)),
-    VerkoperId BIGINT UNSIGNED NOT NULL,
     created_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
-INSERT INTO Stand (VerkoperId, StandType, Prijs, VerhuurdStatus, Opmerking, Datumaangemaakt, Datumgewijzigd) VALUES
-(1, 'AA', 500.00, TRUE, 'Verhuurd aan SneakerStore', SYSDATE(6), SYSDATE(6)),
-(2, 'A', 300.00, FALSE, 'Nog beschikbaar', SYSDATE(6), SYSDATE(6));
+INSERT INTO Stand (id, VerkoperId, StandType, Prijs, VerhuurdStatus, Isactief, created_at, updated_at) VALUES
+(1, 1, 'AA', 500.00, 1, 1, SYSDATE(6), SYSDATE(6)),
+(2, 2, 'A', 300.00, 0, 0, SYSDATE(6), SYSDATE(6));
+
 
 -- 8. Contactpersoon
 CREATE TABLE Contactpersoon (
@@ -156,3 +157,20 @@ CREATE TABLE ContactPerVerkoper (
 INSERT INTO ContactPerVerkoper (VerkoperId, ContactpersoonId, Opmerking, Datumaangemaakt, Datumgewijzigd) VALUES
 (1, 1, 'Kees de Boer is hoofdcontact', SYSDATE(6), SYSDATE(6)),
 (2, 2, 'Anna de Wit is contactpersoon', SYSDATE(6), SYSDATE(6));
+
+
+
+DROP PROCEDURE IF EXISTS Sp_GetAllLeveranciers;
+DELIMITER $$
+
+CREATE PROCEDURE Sp_GetAllStands ()
+BEGIN
+    SELECT STD.Id,
+           STD.VerkoperId,
+           STD.StandType,
+           STD.Prijs,
+           STD.VerhuurdStatus
+    FROM Stand AS STD;
+END$$
+
+DELIMITER ;
