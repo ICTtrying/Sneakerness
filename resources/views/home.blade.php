@@ -16,28 +16,28 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="min-h-screen bg-gray-900">
+<body class="min-h-screen bg-gray-900" 
+data-maintenance="{{ env('APP_MAINTENANCE', 'false') ? 'true' : 'false' }}">
 
+    <!-- Navbar -->
     <x-navbar />
-    <div class="bg-gray-900">
+
+    <!-- Pagina content -->
+    <div class="bg-gray-900 page">
         <div class="relative isolate px-4 pt-10 lg:px-6">
-            <div aria-hidden="true"
-                class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
-                <div style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"
-                    class="relative left-[calc(50%-11rem)] aspect-1155/678 w-96 -translate-x-1/2 rotate-30 bg-linear-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-192">
-                </div>
+            <!-- Achtergrond decoratie -->
+            <div aria-hidden="true" class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
+                <div style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)" class="relative left-[calc(50%-11rem)] aspect-1155/678 w-96 -translate-x-1/2 rotate-30 bg-linear-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-192"></div>
             </div>
-            <div class="mx-auto max-w-xl">
-                <div class="text-center">
-                    <img src="{{ asset('Logo-sneakerness.png') }}" alt="Sneakerness Logo" class="mx-auto mb-4 h-25 w-auto" />
-                    <h1 class="text-4xl font-bold tracking-tight text-balance text-white sm:text-6xl"> {{ $home['title'] }}</h1>
-                    <p class="mt-6 text-lg font-medium text-pretty text-gray-400 sm:text-xl">{{ $home['content'] }}</p>
-                    <div class="mt-8 flex items-center justify-center gap-x-4">
-                        <a href="/tickets"
-                            class="rounded-md bg-indigo-500 px-5 py-3 text-base font-semibold text-white shadow-xs hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Tickets</a>
-                        <a href="/events" class="text-base font-semibold text-white">Events <span
-                                aria-hidden="true">→</span></a>
-                    </div>
+
+            <!-- Hero Section -->
+            <div class="mx-auto max-w-xl text-center">
+                <img src="{{ asset('Logo-sneakerness.png') }}" alt="Sneakerness Logo" class="mx-auto mb-4 h-25 w-auto" />
+                <h1 class="text-4xl font-bold tracking-tight text-balance text-white sm:text-6xl">{{ $home['title'] }}</h1>
+                <p class="mt-6 text-lg font-medium text-pretty text-gray-400 sm:text-xl">{{ $home['content'] }}</p>
+                <div class="mt-8 flex items-center justify-center gap-x-4">
+                    <a href="/tickets" class="rounded-md bg-indigo-500 px-5 py-3 text-base font-semibold text-white shadow-xs hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Tickets</a>
+                    <a href="/events" class="text-base font-semibold text-white">Events <span aria-hidden="true">→</span></a>
                 </div>
             </div>
 
@@ -67,7 +67,42 @@
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
-</body>
 
+    <!-- TailwindPlus Script -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
+
+   <script>
+    document.addEventListener("DOMContentLoaded", () => {
+ 
+    // Check if the maintenance mode is enabled in the .env file
+    const maintenance = document.body.getAttribute('data-maintenance') === 'true';
+    console.log(maintenance); // true or false
+
+    if (maintenance) {
+        const page = document.querySelector('.page');
+        if (page) page.style.display = 'none';
+
+        const maintenanceDiv = document.createElement('div');
+        maintenanceDiv.style.position = 'fixed';
+        maintenanceDiv.style.top = '0';
+        maintenanceDiv.style.left = '0';
+        maintenanceDiv.style.width = '100vw';
+        maintenanceDiv.style.height = '100vh';
+        maintenanceDiv.style.backgroundColor = '#000';
+        maintenanceDiv.style.color = 'white';
+        maintenanceDiv.style.display = 'flex';
+        maintenanceDiv.style.justifyContent = 'center';
+        maintenanceDiv.style.alignItems = 'center';
+        maintenanceDiv.style.fontSize = '2rem';
+        maintenanceDiv.style.fontFamily = "'Quicksand', sans-serif";
+        maintenanceDiv.style.zIndex = '9999';
+        maintenanceDiv.style.textAlign = 'center';
+        maintenanceDiv.style.padding = '20px';
+        maintenanceDiv.textContent = "Onze website is momenteel in onderhoud. Kom later terug.";
+
+        document.body.appendChild(maintenanceDiv);
+    }
+});
+   </script>
+</body>
 </html>
