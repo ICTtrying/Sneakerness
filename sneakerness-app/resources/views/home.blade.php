@@ -39,10 +39,10 @@
         </button>
       </div>
       <div class="hidden lg:flex lg:gap-x-12">
-        <a href="#" class="text-lg font-semibold text-white">Home</a>
-        <a href="#" class="text-lg font-semibold text-white">Stands</a>
-        <a href="#" class="text-lg font-semibold text-white">Tickets</a>
-        <a href="#" class="text-lg font-semibold text-white">Events</a>
+        <a href="/" class="text-lg font-semibold text-white">Home</a>
+        <a href="/stands" class="text-lg font-semibold text-white">Stands</a>
+        <a href="/tickets" class="text-lg font-semibold text-white">Tickets</a>
+        <a href="/events" class="text-lg font-semibold text-white">Events</a>
       </div>
       <div class="hidden lg:flex lg:flex-1 lg:justify-end">
         <a href="#" class="text-sm/6 font-semibold text-white">Log in <span aria-hidden="true">&rarr;</span></a>
