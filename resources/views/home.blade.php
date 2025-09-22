@@ -33,9 +33,9 @@
                     <h1 class="text-4xl font-bold tracking-tight text-balance text-white sm:text-6xl"> {{ $home['title'] }}</h1>
                     <p class="mt-6 text-lg font-medium text-pretty text-gray-400 sm:text-xl">{{ $home['content'] }}</p>
                     <div class="mt-8 flex items-center justify-center gap-x-4">
-                        <a href="/Tickets"
+                        <a href="/tickets"
                             class="rounded-md bg-indigo-500 px-5 py-3 text-base font-semibold text-white shadow-xs hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Tickets</a>
-                        <a href="/Events" class="text-base font-semibold text-white">Events <span
+                        <a href="/events" class="text-base font-semibold text-white">Events <span
                                 aria-hidden="true">→</span></a>
                     </div>
                 </div>
