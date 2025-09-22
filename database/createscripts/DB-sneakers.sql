@@ -108,17 +108,17 @@ INSERT INTO Verkoper (Naam, SpecialeStatus, VerkooptSoort, StandType, Dagen, Opm
 
 -- 7. Stand
 CREATE TABLE Stand (
-    Id INT AUTO_INCREMENT PRIMARY KEY,
-    VerkoperId INT NOT NULL,
-    StandType VARCHAR(5) CHECK (StandType IN ('A','AA','AA+')) DEFAULT 'A',
-    Prijs DECIMAL(10,2),
-    VerhuurdStatus BOOLEAN DEFAULT FALSE,
-    Isactief BOOLEAN DEFAULT TRUE,
-    Opmerking TEXT,
-    Datumaangemaakt DATETIME DEFAULT NULL,
-    Datumgewijzigd DATETIME DEFAULT NULL,
-    FOREIGN KEY (VerkoperId) REFERENCES Verkoper(Id)
-);
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    StandType VARCHAR(50) NOT NULL,
+    Prijs DECIMAL(10,2) NOT NULL CHECK (Prijs >= 0),
+    VerhuurdStatus TINYINT(1) NOT NULL DEFAULT 0 CHECK (VerhuurdStatus IN (0,1)),
+    Isactief TINYINT(1) NOT NULL DEFAULT 1 CHECK (Isactief IN (0,1)),
+    VerkoperId BIGINT UNSIGNED NOT NULL,
+    created_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 
 INSERT INTO Stand (VerkoperId, StandType, Prijs, VerhuurdStatus, Opmerking, Datumaangemaakt, Datumgewijzigd) VALUES
 (1, 'AA', 500.00, TRUE, 'Verhuurd aan SneakerStore', SYSDATE(6), SYSDATE(6)),
