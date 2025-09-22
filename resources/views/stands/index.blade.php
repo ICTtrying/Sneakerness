@@ -14,10 +14,10 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>Naam</th>
-                <th>Omschrijving</th>
-                <th>LeverancierNummer</th>
-                <th>Mobiel</th>
+                <th>VerkoperId</th>
+                <th>StandType</th>
+                <th>Prijs</th>
+                <th>VerhuurdStatus</th>
             </tr>
         </thead>
         <tbody>
@@ -25,8 +25,8 @@
                 <tr>
                     <td>{{ $stand->VerkoperId }}</td>
                     <td>{{ $stand->StandType }}</td>
-                    <td>{{ $stand->Prijs }}</td>
-                    <td>{{ $stand->VerhuurdStatus }}</td>
+                    <td>€{{ $stand->Prijs }}</td>
+                    <td>{{ $stand->VerhuurdStatus == 1 ? 'Verhuurd' : 'Beschikbaar' }}</td>
                 </tr>
             @empty
                 <tr>

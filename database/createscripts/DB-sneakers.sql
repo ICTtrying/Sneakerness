@@ -110,7 +110,7 @@ INSERT INTO Verkoper (Naam, SpecialeStatus, VerkooptSoort, StandType, Dagen, Opm
 CREATE TABLE Stand (
     Id INT AUTO_INCREMENT PRIMARY KEY,
     VerkoperId INT NOT NULL,
-    StandType ENUM('A','AA','AA+') DEFAULT 'A',
+    StandType VARCHAR(5) CHECK (StandType IN ('A','AA','AA+')) DEFAULT 'A',
     Prijs DECIMAL(10,2),
     VerhuurdStatus BOOLEAN DEFAULT FALSE,
     Isactief BOOLEAN DEFAULT TRUE,
