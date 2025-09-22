@@ -1,10 +1,9 @@
 <?php
 
 namespace App\Models;
-use Illuminate\Database\Eloquent\Model as Models;
-use Illuminate\Validation\Rules\In;
+use Illuminate\Database\Eloquent\Model;
 
-class Home extends Models
+class Home extends Model
 {
     // If your table is not 'homes', uncomment and set:
     // protected $table = 'homepage_content';
@@ -17,6 +16,6 @@ class Home extends Models
     // Example: Fetch homepage content
     public static function getHomepageData()
     {
-    return self::first();
+        return self::first(); // or customize as needed
     }
 }

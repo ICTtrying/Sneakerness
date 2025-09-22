@@ -55,7 +55,7 @@
             <div class="flex items-center justify-between">
               <a href="#" class="-m-1.5 p-1.5">
                 <span class="sr-only">Your Company</span>
-                <img src="{{ asset('img/Logo-sneakerness.png') }}" alt="" class="h-20 w-auto" />
+                <img src="{{ asset('Logo-sneakerness.png') }}" alt="" class="h-20 w-auto" />
               </a>
               <button type="button" command="close" commandfor="mobile-menu" class="-m-2.5 rounded-md p-2.5 text-gray-200">
                 <span class="sr-only">Close menu</span>
@@ -89,8 +89,8 @@
     </div>
     <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
       <div class="text-center">
-        <h1 class="text-5xl font-bold tracking-tight text-balance text-white sm:text-7xl">WELCOME TO SNEAKERNESS!</h1>
-        <p class="mt-8 text-lg font-medium text-pretty text-gray-400 sm:text-xl/8">OUR PASSION FOR SNEAKERS MAKES US CREATE EVENTS, THAT CAPTURES THE ESSENCE OF THE CULTURE OF KICKS. BE SURE TO EXPERIENCE WHAT’S MUCH MORE THAN JUST A SHOE.</p>
+        <h1 class="text-5xl font-bold tracking-tight text-balance text-white sm:text-7xl">{{ $home['title'] }}</h1>
+        <p class="mt-8 text-lg font-medium text-pretty text-gray-400 sm:text-xl/8">{{ $home['content'] }}</p>
         <div class="mt-10 flex items-center justify-center gap-x-6">
           <a href="/Tickets" class="rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Tickets</a>
           <a href="/Events" class="text-sm/6 font-semibold text-white">Events <span aria-hidden="true">→</span></a>
