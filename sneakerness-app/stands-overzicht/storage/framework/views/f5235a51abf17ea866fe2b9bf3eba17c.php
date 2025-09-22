@@ -1,0 +1,1 @@
+components.app-logo<?php /**PATH C:\phpprojects\Sneakerness\sneakerness-app\stands-overzicht\storage\framework\views/d5ad50570913e1cb5fb33d9f78eba7bf.blade.php ENDPATH**/ ?>
