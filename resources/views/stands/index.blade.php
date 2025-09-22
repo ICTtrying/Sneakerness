@@ -21,16 +21,16 @@
             </tr>
         </thead>
         <tbody>
-            @forelse ($leveranciers as $leverancier)
+            @forelse ($stands as $stand)
                 <tr>
-                    <td>{{ $leverancier->Naam }}</td>
-                    <td>{{ $leverancier->Contactpersoon }}</td>
-                    <td>{{ $leverancier->LeverancierNummer }}</td>
-                    <td>{{ $leverancier->Mobiel }}</td>
+                    <td>{{ $stand->VerkoperId }}</td>
+                    <td>{{ $stand->StandType }}</td>
+                    <td>{{ $stand->Prijs }}</td>
+                    <td>{{ $stand->VerhuurdStatus }}</td>
                 </tr>
             @empty
                 <tr>
-                    <td colspan="3">Geen leveranciers gevonden.</td>
+                    <td colspan="3">Geen stands gevonden.</td>
                 </tr>
             @endforelse
         </tbody>
