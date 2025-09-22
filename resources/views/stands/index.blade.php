@@ -16,17 +16,21 @@
             <tr>
                 <th>Naam</th>
                 <th>Omschrijving</th>
+                <th>LeverancierNummer</th>
+                <th>Mobiel</th>
             </tr>
         </thead>
         <tbody>
-            @forelse ($allergenen as $allergeen)
+            @forelse ($leveranciers as $leverancier)
                 <tr>
-                    <td>{{ $allergeen->Naam }}</td>
-                    <td>{{ $allergeen->Omschrijving }}</td>
+                    <td>{{ $leverancier->Naam }}</td>
+                    <td>{{ $leverancier->Contactpersoon }}</td>
+                    <td>{{ $leverancier->LeverancierNummer }}</td>
+                    <td>{{ $leverancier->Mobiel }}</td>
                 </tr>
             @empty
                 <tr>
-                    <td colspan="3">Geen allergenen gevonden.</td>
+                    <td colspan="3">Geen leveranciers gevonden.</td>
                 </tr>
             @endforelse
         </tbody>
