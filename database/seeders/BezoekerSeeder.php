@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use App\Models\Bezoeker;
 
 class BezoekerSeeder extends Seeder
 {
@@ -12,23 +12,6 @@ class BezoekerSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('Bezoeker')->insert([
-            [
-                'Naam' => 'Jan Jansen',
-                'Email' => 'jan.jansen@example.com',
-                'Isactief' => true,
-                'Opmerking' => 'Eerste bezoeker',
-                'Datumaangemaakt' => now(),
-                'Datumgewijzigd' => now(),
-            ],
-            [
-                'Naam' => 'Piet Pietersen',
-                'Email' => 'piet.pietersen@example.com',
-                'Isactief' => false,
-                'Opmerking' => null,
-                'Datumaangemaakt' => now(),
-                'Datumgewijzigd' => now(),
-            ],
-        ]);
+        Bezoeker::factory()->count(10)->create();
     }
 }

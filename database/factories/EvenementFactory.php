@@ -9,12 +9,12 @@ class EvenementFactory extends Factory
     public function definition(): array
     {
         return [
-            'Naam' => $this->faker->sentence(3),
+            'Naam' => $this->faker->words(2, true),
             'Datum' => $this->faker->date(),
             'Locatie' => $this->faker->city(),
             'AantalTicketsPerTijdslot' => $this->faker->numberBetween(0, 500),
             'BeschikbareStands' => $this->faker->numberBetween(0, 100),
-            'Isactief' => $this->faker->boolean(),
+            'Isactief' => '1',
             'Opmerking' => $this->faker->optional()->paragraph(),
             'Datumaangemaakt' => $this->faker->optional()->dateTime(),
             'Datumgewijzigd' => $this->faker->optional()->dateTime(),

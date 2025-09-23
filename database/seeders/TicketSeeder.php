@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use App\Models\Ticket;
 
 class TicketSeeder extends Seeder
 {
@@ -12,29 +12,6 @@ class TicketSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('Ticket')->insert([
-            [
-                'BezoekerId' => 1,
-                'EvenementId' => 1,
-                'PrijsId' => 1,
-                'AantalTickets' => 2,
-                'Datum' => now(),
-                'Isactief' => true,
-                'Opmerking' => 'Eerste ticket',
-                'Datumaangemaakt' => now(),
-                'Datumgewijzigd' => now(),
-            ],
-            [
-                'BezoekerId' => 2,
-                'EvenementId' => 1,
-                'PrijsId' => 2,
-                'AantalTickets' => 1,
-                'Datum' => now(),
-                'Isactief' => true,
-                'Opmerking' => null,
-                'Datumaangemaakt' => now(),
-                'Datumgewijzigd' => now(),
-            ],
-        ]);
+        Ticket::factory()->count(10)->create();
     }
 }

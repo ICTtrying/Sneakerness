@@ -16,29 +16,21 @@ class TicketController extends Controller
      */
     public function index(Request $request)
     {
-        // Eager load related models: evenement, prijs, bezoeker
-        $query = Ticket::with(['evenement', 'prijs', 'bezoeker']);
-
-        // Filter by event_id if provided in the request
-        if ($request->has('event_id')) {
-            $query->where('EvenementId', $request->input('event_id'));
-        }
-
-        // Get all matching tickets
-        $tickets = $query->get();
+        // Get all tickets with related models
+        $tickets = Ticket::with(['evenement', 'prijs', 'bezoeker'])->get();
 
         // Pass tickets to the view
-        return view('Tickets/Tickets', ['tickets' => $tickets]);
+        return view('Tickets.EventTickets', ['tickets' => $tickets]);
     }
 
-    public function purchase(Request $request)
+    public function Ticketskinds(Ticket $EventTicket)
     {
-        $ticket = Ticket::findOrFail($request->ticket_id);
-        // bijvoorbeeld ticket reserveren / markeren
-        $ticket->Isactief = false;
-        $ticket->save();
+        return view('Tickets.Ticketkinds', ['EventTicket' => $EventTicket]);
+    }
 
-        return redirect()->route('tickets')->with('success', 'Ticket purchased!');
+    public function addToCart(Request $request)
+    {
+        dd($request->all());
     }
 
 }
