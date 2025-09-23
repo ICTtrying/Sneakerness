@@ -33,7 +33,13 @@
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-200">{{ $stand->VerkoperNaam }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-200">{{ $stand->StandType }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-200">€{{ $stand->Prijs }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-200">{{ $stand->VerhuurdStatus == 1 ? 'Verhuurd' : 'Beschikbaar' }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-200">
+                            @if($stand->VerhuurdStatus == 1 || $stand->VerkoperNaam)
+                                Verhuurd
+                            @else
+                                Beschikbaar
+                            @endif
+                        </td>
                     </tr>
                     @empty
                     <tr>
