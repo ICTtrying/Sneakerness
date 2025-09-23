@@ -116,7 +116,8 @@ CREATE TABLE Stand (
     Isactief TINYINT(1) NOT NULL DEFAULT 1 CHECK (Isactief IN (0,1)),
     created_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    FOREIGN KEY (VerkoperId) REFERENCES Verkoper(Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
@@ -160,7 +161,7 @@ INSERT INTO ContactPerVerkoper (VerkoperId, ContactpersoonId, Opmerking, Datumaa
 
 
 
-DROP PROCEDURE IF EXISTS Sp_GetAllLeveranciers;
+DROP PROCEDURE IF EXISTS Sp_GetAllStands;
 DELIMITER $$
 
 CREATE PROCEDURE Sp_GetAllStands ()
@@ -169,8 +170,10 @@ BEGIN
            STD.VerkoperId,
            STD.StandType,
            STD.Prijs,
-           STD.VerhuurdStatus
-    FROM Stand AS STD;
+           STD.VerhuurdStatus,
+           v.Naam AS VerkoperNaam
+    FROM Stand AS STD
+    JOIN Verkoper v ON STD.VerkoperId = v.Id;
 END$$
 
 DELIMITER ;
