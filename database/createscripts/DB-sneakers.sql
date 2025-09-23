@@ -89,7 +89,7 @@ INSERT INTO Ticket (BezoekerId, EvenementId, PrijsId, AantalTickets, Opmerking, 
 
 -- 6. Verkoper
 CREATE TABLE Verkoper (
-    Id INT AUTO_INCREMENT PRIMARY KEY,
+    Id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     Naam VARCHAR(255) NOT NULL,
     SpecialeStatus BIT DEFAULT 0,
     VerkooptSoort VARCHAR(100),
@@ -104,7 +104,19 @@ CREATE TABLE Verkoper (
 
 INSERT INTO Verkoper (Naam, SpecialeStatus, VerkooptSoort, StandType, Dagen, Opmerking, Datumaangemaakt, Datumgewijzigd) VALUES
 ('SneakerStore', b'1', 'Sneakers', 'AA', 'Twee', 'Partnerverkoper', SYSDATE(6), SYSDATE(6)),
-('FoodCorner', b'0', 'Eten en Drinken', 'A', 'Eén', 'Normale verkoper', SYSDATE(6), SYSDATE(6));
+('FoodCorner', b'0', 'Eten en Drinken', 'A', 'Eén', 'Normale verkoper', SYSDATE(6), SYSDATE(6)),
+('VintageKicks', b'0', 'Vintage sneakers', 'A', 'Eén', 'Verkoopt alleen vintage', SYSDATE(6), SYSDATE(6)),
+('UrbanSole', b'1', 'Streetwear', 'AA+', 'Twee', 'Premium partner', SYSDATE(6), SYSDATE(6)),
+('SneakerFreak', b'0', 'Sneakers & accessoires', 'AA', 'Twee', 'Bekende influencer', SYSDATE(6), SYSDATE(6)),
+('SoleMates', b'0', 'Sneakers', 'A', 'Eén', 'Nieuwe deelnemer', SYSDATE(6), SYSDATE(6)),
+('KickzOnly', b'1', 'Exclusieve sneakers', 'AA+', 'Twee', 'VIP-verkoper', SYSDATE(6), SYSDATE(6)),
+('FreshFeet', b'0', 'Sneakers', 'A', 'Eén', 'Startende verkoper', SYSDATE(6), SYSDATE(6)),
+('LaceUp', b'0', 'Sneaker accessoires', 'AA', 'Twee', 'Accessoire specialist', SYSDATE(6), SYSDATE(6)),
+('SoleFood', b'0', 'Sneaker cleaning', 'A', 'Eén', 'Schoonmaakservice', SYSDATE(6), SYSDATE(6)),
+('StreetLegends', b'1', 'Streetwear & sneakers', 'AA+', 'Twee', 'Populaire stand', SYSDATE(6), SYSDATE(6)),
+('RetroRunners', b'0', 'Retro sneakers', 'A', 'Eén', 'Retro specialist', SYSDATE(6), SYSDATE(6)),
+('SneakerLab', b'0', 'Sneaker custom', 'AA', 'Twee', 'Custom sneakers', SYSDATE(6), SYSDATE(6)),
+('Kicks4Kids', b'0', 'Kindersneakers', 'A', 'Eén', 'Voor kinderen', SYSDATE(6), SYSDATE(6));
 
 -- 7. Stand
 CREATE TABLE Stand (
@@ -123,8 +135,17 @@ CREATE TABLE Stand (
 
 INSERT INTO Stand (id, VerkoperId, StandType, Prijs, VerhuurdStatus, Isactief, created_at, updated_at) VALUES
 (1, 1, 'AA', 500.00, 1, 1, SYSDATE(6), SYSDATE(6)),
-(2, 2, 'A', 300.00, 0, 0, SYSDATE(6), SYSDATE(6));
-
+(2, 2, 'A', 120.00, 0, 1, SYSDATE(6), SYSDATE(6)),
+(3, 3, 'AA+',  80.00, 1, 1, SYSDATE(6), SYSDATE(6)),
+(4, 4, 'AA',  60.00, 0, 1, SYSDATE(6), SYSDATE(6)),
+(5, 5, 'A', 150.00, 0, 1, SYSDATE(6), SYSDATE(6)),
+(6, 6, 'A',  90.50, 1, 0, SYSDATE(6), SYSDATE(6)),
+(7, 7,'AA',300.00, 0, 1, SYSDATE(6), SYSDATE(6)),
+(8, 8,'AA',  45.00, 0, 1, SYSDATE(6), SYSDATE(6)),
+(9, 9,'AA+',  75.00, 0, 1, SYSDATE(6), SYSDATE(6)),
+(10, 10,'A',  55.00, 0, 1, SYSDATE(6), SYSDATE(6)),
+(11, 11,'A', 140.00, 1, 1, SYSDATE(6), SYSDATE(6)),
+(12, 12,'AA',500.00, 0, 1, SYSDATE(6), SYSDATE(6));
 
 -- 8. Contactpersoon
 CREATE TABLE Contactpersoon (
@@ -145,7 +166,7 @@ INSERT INTO Contactpersoon (Naam, Telefoonnummer, Email, Opmerking, Datumaangema
 -- 9. ContactPerVerkoper
 CREATE TABLE ContactPerVerkoper (
     Id INT AUTO_INCREMENT PRIMARY KEY,
-    VerkoperId INT NOT NULL,
+    VerkoperId BIGINT UNSIGNED NOT NULL,
     ContactpersoonId INT NOT NULL,
     Isactief BOOLEAN DEFAULT TRUE,
     Opmerking TEXT,

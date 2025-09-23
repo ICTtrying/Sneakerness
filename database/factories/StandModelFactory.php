@@ -13,7 +13,7 @@ class StandModelFactory extends Factory
     {
     return [
         'StandType' => $this->faker->randomElement(['A', 'AA', 'AA+']),
-        'Prijs' => $this->faker->randomFloat(2, 1000, 5000),
+        'Prijs' => $this->faker->randomFloat(2, 100, 1000),
         'VerhuurdStatus' => $this->faker->boolean(),
         'Isactief' => true,
         'VerkoperId' => $this->faker->numberBetween(1, 10)

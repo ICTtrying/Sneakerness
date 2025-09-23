@@ -6,5 +6,5 @@ use App\Livewire\Settings\Profile;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StandController;
 
-Route::get('/', 
+Route::get('/stand', 
 [StandController::class, 'index']);
