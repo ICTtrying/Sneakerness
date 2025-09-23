@@ -19,5 +19,10 @@ class DatabaseSeeder extends Seeder
             BezoekerSeeder::class,
             TicketSeeder::class,
         ]);
+
+        User::factory()->create([
+            'name' => 'Test User',
+            'email' => 'test@example.com',
+        ]);
     }
 }
