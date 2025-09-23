@@ -2,10 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Blade;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\VerkoperController;
+
 
 Blade::component('layouts.app', 'layouts.app');
 
 
-Route::view('/contact', 'contact');
+Route::get('/contact', [ContactController::class, 'index']);
 
-Route::view('/verkoper', 'verkoper.verkoper');
+Route::get('/verkoper', [VerkoperController::class, 'index']);
