@@ -5,7 +5,7 @@
         copied: false,
         async copyToClipboard() {
             try {
-                await window.copyToClipboard('{{ $request->fullUrl() }}');
+                await navigator.clipboard.writeText('{{ $request->fullUrl() }}');
                 this.copied = true;
                 setTimeout(() => { this.copied = false }, 3000);
             } catch (err) {

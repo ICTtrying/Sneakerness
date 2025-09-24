@@ -34,42 +34,42 @@ class Str
     /**
      * The cache of snake-cased words.
      *
-     * @var array<string, string>
+     * @var array
      */
     protected static $snakeCache = [];
 
     /**
      * The cache of camel-cased words.
      *
-     * @var array<string, string>
+     * @var array
      */
     protected static $camelCache = [];
 
     /**
      * The cache of studly-cased words.
      *
-     * @var array<string, string>
+     * @var array
      */
     protected static $studlyCache = [];
 
     /**
      * The callback that should be used to generate UUIDs.
      *
-     * @var (callable(): \Ramsey\Uuid\UuidInterface)|null
+     * @var callable|null
      */
     protected static $uuidFactory;
 
     /**
      * The callback that should be used to generate ULIDs.
      *
-     * @var (callable(): \Symfony\Component\Uid\Ulid)|null
+     * @var callable|null
      */
     protected static $ulidFactory;
 
     /**
      * The callback that should be used to generate random strings.
      *
-     * @var (callable(int): string)|null
+     * @var callable|null
      */
     protected static $randomStringFactory;
 

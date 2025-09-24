@@ -22,8 +22,6 @@ class PhikiServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Blade::resolved(function ($blade) {
-            $blade->componentNamespace('Phiki\\Adapters\\Laravel\\Components', 'phiki');
-        });
+        Blade::componentNamespace('Phiki\\Adapters\\Laravel\\Components', 'phiki');
     }
 }

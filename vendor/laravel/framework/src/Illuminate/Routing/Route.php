@@ -1007,10 +1007,6 @@ class Route
             $this->domain($this->action['domain']);
         }
 
-        if (isset($this->action['can'])) {
-            $this->can($this->action['can']);
-        }
-
         return $this;
     }
 

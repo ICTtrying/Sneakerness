@@ -10,7 +10,7 @@
         copied: false,
         async copyToClipboard() {
             try {
-                await window.copyToClipboard(markdown);
+                await navigator.clipboard.writeText(markdown);
                 this.copied = true;
                 setTimeout(() => { this.copied = false }, 3000);
             } catch (err) {

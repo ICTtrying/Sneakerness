@@ -4,6 +4,7 @@ use App\Http\Controllers\TicketController;
 use Illuminate\Support\Facades\Blade;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\VerkoperController;
+use App\Http\Controllers\HomeController;
 
 // Nu luistert de route op /
 Route::get('/Tickets', [TicketController::class, 'index']);
@@ -19,3 +20,5 @@ Blade::component('layouts.app', 'layouts.app');
 Route::get('/contact', [ContactController::class, 'index']);
 
 Route::get('/verkoper', [VerkoperController::class, 'index']);
+
+Route::get('/', [HomeController::class, 'index']);
