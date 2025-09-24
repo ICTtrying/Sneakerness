@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Blade;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\VerkoperController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\StandController;
 
 // Nu luistert de route op /
 Route::get('/Tickets', [TicketController::class, 'index']);
@@ -22,3 +23,4 @@ Route::get('/contact', [ContactController::class, 'index']);
 Route::get('/verkoper', [VerkoperController::class, 'index']);
 
 Route::get('/', [HomeController::class, 'index']);
+Route::get('/Stands', [StandController::class,'index']);
