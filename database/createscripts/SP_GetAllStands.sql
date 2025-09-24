@@ -1,4 +1,4 @@
-DROP PROCEDURE IF EXISTS Sp_GetAllLeveranciers;
+DROP PROCEDURE IF EXISTS Sp_GetAllStands;
 DELIMITER $$
 
 CREATE PROCEDURE Sp_GetAllStands ()
@@ -8,11 +8,9 @@ BEGIN
            STD.StandType,
            STD.Prijs,
            STD.VerhuurdStatus,
-           STD.Isactief,
-           STD.Opmerking,
-           STD.Datumaangemaakt,
-           STD.Datumgewijzigd
-    FROM Stand AS STD;
+           v.Naam AS VerkoperNaam
+    FROM Stand AS STD
+    JOIN Verkoper v ON STD.VerkoperId = v.Id;
 END$$
 
 DELIMITER ;
