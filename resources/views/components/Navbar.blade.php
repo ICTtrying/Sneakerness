@@ -40,27 +40,22 @@
                             alt="Your Company" class="h-8 w-auto" />
                     </div>
                     <div class="hidden sm:ml-6 sm:block">
-                        <a href="/"
-                            class="rounded-md px-3 py-2 text-sm font-medium {{ request()->is('/') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white' }}"
-                            aria-current="{{ request()->is('/') ? 'page' : false }}">
-                            Home
-                        </a>
-                        <a href="/Stands"
-                            class="rounded-md px-3 py-2 text-sm font-medium {{ request()->is('Stands') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white' }}">
-                            Stands
-                        </a>
-                        <a href="/Evenementen"
-                            class="rounded-md px-3 py-2 text-sm font-medium {{ request()->is('Evenementen') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white' }}">
-                            Evenementen
-                        </a>
-                        <a href="/Tickets"
-                            class="rounded-md px-3 py-2 text-sm font-medium {{ request()->is('Tickets') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white' }}">
-                            Buy Tickets
-                        </a>
-                        <a href="/contact"
-                            class="rounded-md px-3 py-2 text-sm font-medium {{ request()->is('Contact') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white' }}">
-                            Contact
-                        </a>
+                        <div class="flex space-x-4">
+                            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-white/5 hover:text-white" -->
+                            <a href="/" aria-current="page"
+                                class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white">Home</a>
+                            <a href="/Stands"
+                                class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Stands</a>
+                            <a href="/Evenementen"
+                                class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Evenementen</a>
+                            <a href="/verkoper"
+                                class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Verkopers</a>
+                            <a href="/Tickets"
+                                class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Buy Tickets</a>
+                              <a href="/contact"
+                                class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Contact</a>
+                                
+                        </div>
                     </div>
                 </div>
                 <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
@@ -112,9 +107,12 @@
                     class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-white/5 hover:text-white">Stand</a>
                 <a href="/Evenementen"
                     class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-white/5 hover:text-white">Evenementen</a>
+                <a href="/verkoper"
+                    class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-white/5 hover:text-white">Verkopers</a>
                 <a href="/Tickets"
-                    class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-white/5 hover:text-white">Buy
-                    Tickets</a>
+                    class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-white/5 hover:text-white">Buy Tickets</a>
+                <a href="/contact" 
+                    class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-white/5 hover:text-white">Contact</a>
             </div>
         </el-disclosure>
     </nav>
