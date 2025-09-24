@@ -20,7 +20,7 @@
 data-maintenance="{{ env('APP_MAINTENANCE', 'false') ? 'true' : 'false' }}">
 
     <!-- Navbar -->
-    <x-navbar />
+    <x-Navbar />
 
     <!-- Pagina content -->
     <div class="bg-gray-900 page">
