@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class StandModel extends Model
+class Stand extends Model
 {   
     use HasFactory;
     protected $fillable = ['StandType', 'Prijs', 'VerhuurdStatus', 'Isactief', 'VerkoperId'];

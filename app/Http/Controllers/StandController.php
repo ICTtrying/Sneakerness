@@ -2,23 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\StandModel;
+use App\Models\Stand;
 use Illuminate\Http\Request;
 
 class StandController extends Controller
 {
-    private $StandModel;
+    private $Stand;
 
     public function __construct()
     {
-        $this->StandModel = new StandModel();
+        $this->Stand = new Stand();
     }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-         $stands = $this->StandModel->sp_getAllStands();
+         $stands = $this->Stand->sp_getAllStands();
 
        
         
@@ -49,7 +49,7 @@ class StandController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(StandModel $standModel)
+    public function show(Stand $standModel)
     {
         //
     }
@@ -57,7 +57,7 @@ class StandController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(StandModel $standModel)
+    public function edit(Stand $standModel)
     {
         //
     }
@@ -65,7 +65,7 @@ class StandController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, StandModel $standModel)
+    public function update(Request $request, Stand $standModel)
     {
         //
     }
@@ -73,7 +73,7 @@ class StandController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(StandModel $standModel)
+    public function destroy(Stand $standModel)
     {
         //
     }
