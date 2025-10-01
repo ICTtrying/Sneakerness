@@ -30,7 +30,9 @@
                 </div>
             @else
                 @foreach ($tickets as $ticket)
-                    <div class="ticket-cards">
+                    <form action="/" method="POST" class="ticket-cards">
+                        @csrf
+                        <input type="hidden" name="ticket_id" value="{{ $ticket->id }}">
                         <div class="event-name-card">
                             <div class="Ticket-Logo-card">
                                 <img src="{{ asset('img/Sneakerlogo.png') }}" alt="Sneaker Logo"
@@ -45,13 +47,27 @@
                             <div class="Ticket-Date-card">
                                 {{ $ticket->Evenement->Datum }}
                             </div>
+                            <div>
+                                <select name="time" class="Ticket-Time-card">
+                                    @for ($hour = 8; $hour <= 20; $hour += 2)
+                                        <option value="{{ sprintf('%02d:00', $hour) }}">{{ sprintf('%02d:00', $hour) }} - {{ sprintf('%02d:00', $hour + 2) }}</option>
+                                    @endfor
+                                </select>
+                            </div>
+                            <div>
+                                <input type="number" name="amount" min="1" max="10" value="1" class="Ticket-Amount-card" />
+                            </div>
+                            <div>
+                                <button type="submit" class="Ticket-Buy-btn bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                                    Buy Ticket
+                                </button>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 @endforeach
             @endif
         </div>
     </div>
 </body>
-
 
 </html>

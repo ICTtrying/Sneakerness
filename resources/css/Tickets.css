@@ -39,7 +39,7 @@
     margin: 30px auto;
     padding: 24px;
     border: none;
-    height: 320px;                /* Standard height */
+    height: auto;                /* Standard height */
     min-height: 320px;            /* Ensures minimum height */
     overflow: auto;               /* Scroll if content overflows */
     display: flex;

@@ -21,4 +21,6 @@ Route::get('/contact', [ContactController::class, 'index']);
 Route::get('/verkoper', [VerkoperController::class, 'index']);
 
 Route::get('/', [HomeController::class, 'index']);
+
+Route::Post('/', [HomeController::class, 'index']);
 Route::get('/Stands', [StandController::class,'index']);
