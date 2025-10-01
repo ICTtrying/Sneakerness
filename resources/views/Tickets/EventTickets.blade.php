@@ -31,8 +31,7 @@
             @else
                 @foreach ($tickets as $ticket)
                     <div class="ticket-cards">
-                        <a href="/Tickets/{{ $ticket->Id }}"
-                            class="event-name-card">
+                        <div class="event-name-card">
                             <div class="Ticket-Logo-card">
                                 <img src="{{ asset('img/Sneakerlogo.png') }}" alt="Sneaker Logo"
                                     class="mx-auto mb-4 h-16 w-16 object-contain">
@@ -46,7 +45,7 @@
                             <div class="Ticket-Date-card">
                                 {{ $ticket->Evenement->Datum }}
                             </div>
-                        </a>
+                        </div>
                     </div>
                 @endforeach
             @endif
