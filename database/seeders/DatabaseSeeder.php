@@ -22,9 +22,6 @@ class DatabaseSeeder extends Seeder
             TicketSeeder::class,
         ]);
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        User::factory(3)->create();
     }
 }
