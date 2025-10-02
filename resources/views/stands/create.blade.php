@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $title }}</title>
+    <title>Add Stand</title>
 </head>
 
 <body class="bg-gray-900 ">
@@ -13,48 +13,42 @@
 
     <div class="space-y-6 m-6 mx-30">
         <p class="text-gray-700 dark:text-gray-200">
-            <strong class="text-4xl">{{ $title }}</strong>
+            <strong class="text-4xl">Add Stand</strong>
             <?php echo str_repeat("<br>", 4); ?>
-            {{ $message }}
+            Fill in the details below to add a new stand.
         </p>
-        <form method="POST" action="/jobs" class="mt-6 space-y-8">
+        <form method="POST" action="/stands" class="mt-6 space-y-8">
             <div class="space-y-12">
                 <div class="border-b border-white/10 pb-12">
                     <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                         <div class="sm:col-span-4">
-                            <label for="title" class="block text-sm/6 font-medium text-white">Naam</label>
+                            <label for="title" class="block text-sm/6 font-medium text-white">Seller Name</label>
                             <div class="mt-2">
                                 <div
                                     class="flex items-center rounded-md bg-white/5 pl-3 outline-1 -outline-offset-1 outline-white/10 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-500">
-                                    <div class="shrink-0 text-base text-gray-400 select-none sm:text-sm/6">
-                                    </div>
-                                    <input id="title" type="text" name="title" placeholder="Vul je naam in"
+                                    <input id="title" type="text" name="title" placeholder="Enter seller name"
                                         class="block min-w-0 grow bg-transparent py-1.5 pr-1  text-base text-white placeholder:text-gray-500 focus:outline-none sm:text-sm/6" />
                                 </div>
                             </div>
                         </div>
 
                         <div class="sm:col-span-4">
-                            <label for="stand_type" class="block text-sm/6 font-medium text-white">Soort Stand</label>
+                            <label for="stand_type" class="block text-sm/6 font-medium text-white">Stand Type</label>
                             <div class="mt-2">
                                 <div
                                     class="flex items-center rounded-md bg-white/5 pl-3 outline-1 -outline-offset-1 outline-white/10 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-500">
-                                    <div class="shrink-0 text-base text-gray-400 select-none sm:text-sm/6">
-                                    </div>
-                                    <input id="stand_type" type="text" name="stand_type" placeholder="Type stand"
+                                    <input id="stand_type" type="text" name="stand_type" placeholder="Type of stand"
                                         class="block min-w-0 grow bg-transparent py-1.5 pr-1  text-base text-white placeholder:text-gray-500 focus:outline-none sm:text-sm/6" />
                                 </div>
                             </div>
                         </div>
 
                         <div class="sm:col-span-4">
-                            <label for="days" class="block text-sm/6 font-medium text-white">Dagen</label>
+                            <label for="days" class="block text-sm/6 font-medium text-white">Number of Days</label>
                             <div class="mt-2">
                                 <div
                                     class="flex items-center rounded-md bg-white/5 pl-3 outline-1 -outline-offset-1 outline-white/10 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-500">
-                                    <div class="shrink-0 text-base text-gray-400 select-none sm:text-sm/6">
-                                    </div>
-                                    <input id="days" type="text" name="days" placeholder="Aantal dagen"
+                                    <input id="days" type="text" name="days" placeholder="Number of days"
                                         class="block min-w-0 grow bg-transparent py-1.5 pr-1  text-base text-white placeholder:text-gray-500 focus:outline-none sm:text-sm/6" />
                                 </div>
                             </div>
@@ -67,7 +61,7 @@
             <div class="mt-6 flex items-center justify-end gap-x-6">
                 <button type="button" class="text-sm/6 font-semibold text-white">Cancel</button>
                 <button type="submit"
-                    class="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Save</button>
+                    class="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Add</button>
             </div>
         </form>
 
