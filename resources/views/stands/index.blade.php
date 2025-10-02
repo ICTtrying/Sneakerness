@@ -9,7 +9,7 @@
 <body class="bg-gray-900 ">
     <x-navbar />
 
-      <div class="space-y-6 m-6">
+    <div class="space-y-6 m-6">
         <p class="text-gray-700 dark:text-gray-200">
             <strong class="text-4xl">{{ $title }}</strong>
             <?php echo str_repeat("<br>", 4); ?>
@@ -21,8 +21,8 @@
             <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                 <thead class="bg-gray-50 dark:bg-gray-700">
                     <tr>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase dark:text-gray-300">Verkoper</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase dark:text-gray-300">Categorie</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase dark:text-gray-300">Seller</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase dark:text-gray-300">Category</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase dark:text-gray-300">Stand Type</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase dark:text-gray-300">Status</th>
                     </tr>
@@ -32,7 +32,7 @@
                     {{-- If stand is empty, write this line --}}
                     @if(empty($stand))
                         <tr>
-                            <td colspan="4" class="px-6 py-4 text-sm text-gray-900 dark:text-gray-200 text-center">Stand is leeg</td>
+                            <td colspan="4" class="px-6 py-4 text-sm text-gray-900 dark:text-gray-200 text-center">Stand is empty</td>
                         </tr>
                     @endif
                     <tr>
@@ -41,15 +41,15 @@
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-200">€{{ $stand->Prijs }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-200">
                             @if($stand->VerhuurdStatus == 1 || $stand->verkoper->Naam)
-                                Verhuurd
+                                Rented
                             @else
-                                Beschikbaar
+                                Available
                             @endif
                         </td>
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="4" class="px-6 py-4 text-sm text-gray-900 dark:text-gray-200 text-center">Geen stands gevonden</td>
+                        <td colspan="4" class="px-6 py-4 text-sm text-gray-900 dark:text-gray-200 text-center">No stands found</td>
                     </tr>
                     @endforelse
                 </tbody>
