@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Ticket;
-
-
+use Illuminate\Http\Request;
 
 class TicketController extends Controller
 {
@@ -23,16 +21,30 @@ class TicketController extends Controller
         return view('Tickets.EventTickets', ['tickets' => $tickets]);
     }
 
-    public function Ticketskinds(Ticket $EventTicket)
-    {
-        return view('Tickets.Ticketkinds', ['EventTicket' => $EventTicket]);
-    }
-
     public function addToCart(Request $request)
     {
-        dd($request->all());
+        $validated = $request->validate([
+            'ticket_id' => 'required|integer|exists:tickets,id',
+            'eventname' => 'required|string',
+            'date' => 'required|date',
+            'location' => 'required|string',
+            'time' => 'required|string',
+            'amount' => 'required|integer|min:1|max:10',
+        ]);
+
+        $ticket = Ticket::find($validated['ticket_id']);
+
+        // Store data in session
+        session(['basket_data' => [
+            'ticket' => $ticket,
+            'eventname' => $validated['eventname'],
+            'date' => $validated['date'],
+            'location' => $validated['location'],
+            'time' => $validated['time'],
+            'amount' => $validated['amount'],
+        ]]);
+
+        // Redirect to basket page
+        return redirect()->route('basket');
     }
-
 }
-
-
