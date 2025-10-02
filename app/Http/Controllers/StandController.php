@@ -34,7 +34,7 @@ class StandController extends Controller
      */
     public function create()
     {
-        return view('stands.reserveren',[
+        return view('stands.create',[
             'title' => 'Reserveer een stand',
             'message' => 'Vul hieronder de gegevens in om een stand te reserveren.'
         ]);
