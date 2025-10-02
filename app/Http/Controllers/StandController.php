@@ -24,21 +24,21 @@ class StandController extends Controller
 
         return view('stands.index',[
             'title' => 'Stands',
-            'message' => 'Welkom bij de stands pagina',
+            'message' => 'Welcome to the stands page',
             'stands' => $stands
         ]);
-    }
+        }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
+        /**
+         * Show the form for creating a new resource.
+         */
+        public function create()
+        {
         return view('stands.create',[
-            'title' => 'Reserveer een stand',
-            'message' => 'Vul hieronder de gegevens in om een stand te reserveren.'
+            'title' => 'Reserve a stand',
+            'message' => 'Fill in the details below to reserve a stand.'
         ]);
-    }
+        }
 
     /**
      * Store a newly created resource in storage.
