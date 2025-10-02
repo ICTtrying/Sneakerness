@@ -25,7 +25,10 @@ Route::get('/verkoper', [VerkoperController::class, 'index']);
 Route::get('/', [HomeController::class, 'index']);
 
 Route::Post('/', [HomeController::class, 'index']);
+
 Route::get('/Stands', [StandController::class,'index']);
+
+Route::get('/Stands/reserveren', [StandController::class,'create']);
 
 Route::controller(RegisterUserController::class)->group(function () {
     Route::get('/register', 'create');

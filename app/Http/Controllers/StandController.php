@@ -34,7 +34,10 @@ class StandController extends Controller
      */
     public function create()
     {
-        //
+        return view('stands.reserveren',[
+            'title' => 'Reserveren',
+            'message' => 'Vul het formulier in om een stand te reserveren'
+        ]);
     }
 
     /**
