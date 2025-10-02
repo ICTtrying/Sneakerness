@@ -4,19 +4,24 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
 
 class Stand extends Model
-{   
+{
     use HasFactory;
-    protected $fillable = ['StandType', 'Prijs', 'VerhuurdStatus', 'Isactief', 'VerkoperId'];
 
-    protected $table = 'Stand';
-    
+    protected $table = 'stand'; // niet hoofdletter!
 
-    public function sp_getAllStands(): array
+    protected $fillable = [
+        'StandType',
+        'Prijs',
+        'VerhuurdStatus',
+        'Isactief',
+        'verkoper_id',
+        'Dagen',
+    ];
+
+    public function verkoper()
     {
-        $result = DB::select(query: 'CALL Sp_GetAllStands');
-        return $result;
+        return $this->belongsTo(Verkoper::class, 'verkoper_id', 'id');
     }
 }

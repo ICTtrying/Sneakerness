@@ -18,9 +18,8 @@ class StandController extends Controller
      */
     public function index()
     {
-         $stands = $this->Stand->sp_getAllStands();
+         $stands = $this->Stand->with('verkoper')->get();
 
-       
         
 
         return view('stands.index',[

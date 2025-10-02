@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\Verkoper;
 
 return new class extends Migration
 {
@@ -13,8 +14,13 @@ return new class extends Migration
     {
         Schema::create('Stand', function (Blueprint $table) {
             $table->id();
-            $table->timestamps(); // voegt created_at en updated_at toe
-            $table->softDeletes(); // voegt deleted_at toe
+            $table->foreignIdFor(Verkoper::class);
+            $table->string('StandType');
+            $table->decimal('Prijs', 8, 2);
+            $table->boolean('VerhuurdStatus')->default(false);
+            $table->integer('Dagen');
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

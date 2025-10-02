@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
             PrijsSeeder::class,
             BezoekerSeeder::class,
             TicketSeeder::class,
+            VerkoperSeeder::class,
+            StandSeeder::class,
         ]);
 
         User::factory(3)->create();

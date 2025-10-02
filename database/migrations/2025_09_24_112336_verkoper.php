@@ -12,18 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('verkoper', function (Blueprint $table) {
-            $table->id('Id');
-            $table->unsignedBigInteger('VerkoperId')->nullable();
+            $table->id();
             $table->string('Naam', 255);
             $table->boolean('SpecialeStatus')->default(0);
             $table->string('VerkooptSoort', 100)->nullable();
             $table->enum('StandType', ['A', 'AA', 'AA+'])->default('A');
-            $table->enum('Dagen', ['Eén', 'Twee'])->default('Eén');
+            $table->integer('Dagen');
             $table->string('Logo', 255)->nullable();
             $table->boolean('Isactief')->default(true);
             $table->text('Opmerking')->nullable();
-            $table->dateTime('Datumaangemaakt')->nullable();
-            $table->dateTime('Datumgewijzigd')->nullable();
+            $table->timestamps();
         });
     }
 

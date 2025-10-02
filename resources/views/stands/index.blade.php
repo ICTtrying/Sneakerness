@@ -36,11 +36,11 @@
                         </tr>
                     @endif
                     <tr>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-200">{{ $stand->VerkoperNaam }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-200">{{ $stand->verkoper->Naam }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-200">{{ $stand->StandType }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-200">€{{ $stand->Prijs }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-200">
-                            @if($stand->VerhuurdStatus == 1 || $stand->VerkoperNaam)
+                            @if($stand->VerhuurdStatus == 1 || $stand->verkoper->Naam)
                                 Verhuurd
                             @else
                                 Beschikbaar
