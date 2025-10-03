@@ -8,6 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\StandController;
 use App\Http\Controllers\RegisterUserController;
 use App\Http\Controllers\SessionController;
+use App\Models\Stand;
 
 // Nu luistert de route op /
 Route::get('/Tickets', [TicketController::class, 'index']);
@@ -29,6 +30,18 @@ Route::Post('/', [HomeController::class, 'index']);
 Route::get('/Stands', [StandController::class,'index']);
 
 Route::get('/Stands/create', [StandController::class,'create']);
+
+Route::post('/stands', function () {
+
+    Stand::create([
+        'Prijs' => request('price'),
+        'StandType' => request('stand_type'),
+        'Dagen' => request('days'),
+        'verkoper_id' => 1,
+    ]);
+
+    return redirect('/Stands')->with('success', 'Stand successfully added');
+});
 
 Route::controller(RegisterUserController::class)->group(function () {
     Route::get('/register', 'create');

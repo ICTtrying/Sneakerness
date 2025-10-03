@@ -34,20 +34,36 @@ class StandController extends Controller
          */
         public function create()
         {
-            
-        return view('stands.create',[
-            'title' => 'Reserve a stand',
-            'message' => 'Fill in the details below to reserve a stand.'
-        ]);
+            return view('stands.create', [
+                'title' => 'Add Stand',
+                'message' => 'Welcome to the add stand page'
+            ]);
         }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        /**
+         * Store a newly created resource in storage.
+         */
+        public function store(Request $request)
+        {
+            echo 'hello from the homepage';
+            exit;
+            
+            $validated = $request->validate([
+                'price' => 'required|numeric|min:100|max:1000',
+                'stand_type' => 'required|string|max:255',
+                'days' => 'required|integer|min:1|max:5',
+            ]);
+
+            // Create and save the stand
+            $stand = new Stand();
+            $stand->price = $validated['price'];
+            $stand->stand_type = $validated['stand_type'];
+            $stand->days = $validated['days'];
+            $stand->save();
+            dd($stand);
+
+            return redirect()->route('stands.index')->with('success', "Stand is succesvol toegevoegd");
+        }
 
     /**
      * Display the specified resource.
