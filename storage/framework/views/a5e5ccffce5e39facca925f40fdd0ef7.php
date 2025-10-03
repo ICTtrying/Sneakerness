@@ -1,0 +1,1 @@
+components.layouts.app<?php /**PATH C:\Users\yassi\Herd\sneakerness\storage\framework\views/76e431c8f62f449e4905da69998af4ae.blade.php ENDPATH**/ ?>
