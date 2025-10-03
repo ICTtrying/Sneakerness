@@ -12,7 +12,7 @@ class TicketController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index(Request $request)
+    public function index()
     {
         // Get all tickets with related models
         $tickets = Ticket::with(['evenement', 'prijs', 'bezoeker'])->get();
@@ -23,28 +23,8 @@ class TicketController extends Controller
 
     public function addToCart(Request $request)
     {
-        $validated = $request->validate([
-            'ticket_id' => 'required|integer|exists:tickets,id',
-            'eventname' => 'required|string',
-            'date' => 'required|date',
-            'location' => 'required|string',
-            'time' => 'required|string',
-            'amount' => 'required|integer|min:1|max:10',
-        ]);
+        $ticket = $request->all();
 
-        $ticket = Ticket::find($validated['ticket_id']);
-
-        // Store data in session
-        session(['basket_data' => [
-            'ticket' => $ticket,
-            'eventname' => $validated['eventname'],
-            'date' => $validated['date'],
-            'location' => $validated['location'],
-            'time' => $validated['time'],
-            'amount' => $validated['amount'],
-        ]]);
-
-        // Redirect to basket page
-        return redirect()->route('basket');
+        return view('Tickets.basket', ['tickets' => $ticket]);
     }
 }

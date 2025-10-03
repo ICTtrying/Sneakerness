@@ -32,10 +32,10 @@
                 @foreach ($tickets as $ticket)
                     <form action="/add-to-cart" method="POST" class="ticket-cards">
                         @csrf
-                        <input type="hidden" name="ticket_id" value="{{ $ticket->id }}">
-                        <input type="hidden" name="eventname" value="{{ $ticket->Evenement->Naam }}">
-                        <input type="hidden" name="date" value="{{ $ticket->Evenement->Datum }}">
-                        <input type="hidden" name="location" value="{{ $ticket->Evenement->Locatie }}">
+                        <input type="hidden" name="ticket_id" value="{{ $ticket->id }}" required>
+                        <input type="hidden" name="eventname" value="{{ $ticket->Evenement->Naam }}" required>
+                        <input type="hidden" name="date" value="{{ $ticket->Evenement->Datum }}" required>
+                        <input type="hidden" name="location" value="{{ $ticket->Evenement->Locatie }}" required>
 
                         <div class="event-name-card">
                             <div class="Ticket-Logo-card">
