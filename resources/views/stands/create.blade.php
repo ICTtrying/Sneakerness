@@ -17,6 +17,7 @@
             <?php echo str_repeat("<br>", 4); ?>
             Fill in the details below to add a new stand.
         </p>
+        @csrf
         <form method="POST" action="/stands" class="mt-6 space-y-8">
             <div class="space-y-12">
                 <div class="border-b border-white/10 pb-12">
