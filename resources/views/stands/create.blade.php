@@ -20,6 +20,9 @@
        
         <form method="POST" action="/stands" class="mt-6 space-y-8">
          @csrf
+
+         
+         
             <div class="space-y-12">
                 <div class="border-b border-white/10 pb-12">
                     <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
@@ -39,8 +42,12 @@
                             <div class="mt-2">
                                 <div
                                     class="flex items-center rounded-md bg-white/5 pl-3 outline-1 -outline-offset-1 outline-white/10 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-500">
-                                    <input id="stand_type" type="text" name="stand_type" placeholder="Type of stand"
-                                        class="block min-w-0 grow bg-transparent py-1.5 pr-1  text-base text-white placeholder:text-gray-500 focus:outline-none sm:text-sm/6" />
+                                    <select id="stand_type" name="stand_type"
+                                        class="block min-w-0 grow bg-transparent py-1.5 pr-1 text-base text-white placeholder:text-gray-500 focus:outline-none sm:text-sm/6">
+                                        <option class="text-black" value="A">A</option>
+                                        <option class="text-black" value="AA">AA</option>
+                                        <option class="text-black" value="AA+">AA+</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -55,7 +62,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
