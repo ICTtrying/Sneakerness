@@ -19,6 +19,7 @@ class VerkoperFactory extends Factory
         return [
             'Naam' => $this->faker->company,
             'SpecialeStatus' => $this->faker->boolean,
+            'VerkooptSoort' => $this->faker->randomElement(['sneakers', 'kleding', 'accessoires', 'verzamelobjecten']),
             'StandType' => $this->faker->randomElement(['A', 'AA', 'AA+']),
             'Dagen' => $this->faker->randomElement(['1', '2', '3', '4']),
             'Logo' => $this->faker->optional()->imageUrl(200, 200, 'business', true, 'logo'),

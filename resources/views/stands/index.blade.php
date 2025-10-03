@@ -16,6 +16,12 @@
             {{ $message }}
         </p>
 
+        <a href="{{ route('stands.create') }}">
+            <button class="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 mb-4 cursor-pointer">
+            Add Stand
+            </button>
+        </a>
+
         {{-- Example table of vendors --}}
         <div class="overflow-x-auto">
             <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">

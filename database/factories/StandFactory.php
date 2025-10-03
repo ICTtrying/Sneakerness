@@ -19,8 +19,8 @@ class StandFactory extends Factory
     {
         return [
             'verkoper_id' => Verkoper::factory(),
-            'StandType' => $this->faker->randomElement(['A', 'AA', 'AA+']),
-            'Dagen' => fake()->randomNumber(5),
+            'StandType' => $this->faker->randomElement(array: ['A', 'AA', 'AA+']),
+            'Dagen' => $this->faker->randomFloat(0, 1, 3),
             'Prijs' => $this->faker->randomFloat(2, 0, 1000),
             'VerhuurdStatus' => $this->faker->boolean() ? 1 : 0,
             'created_at' => now(),

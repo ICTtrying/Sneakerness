@@ -29,11 +29,12 @@ Route::Post('/', [HomeController::class, 'index']);
 
 Route::get('/Stands', [StandController::class,'index']);
 
-Route::get('/Stands/create', [StandController::class,'create']);
+Route::get('/Stands/create', [StandController::class,'create'])->name('stands.create');
 
 Route::post('/stands', function () {
 
     Stand::create([
+        'VerkoperSoort' => request('seller_category'),
         'Prijs' => request('price'),
         'StandType' => request('stand_type'),
         'Dagen' => request('days'),
