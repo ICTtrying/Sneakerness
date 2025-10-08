@@ -42,4 +42,8 @@ class Ticket extends Model
         return $this->belongsTo(Prijs::class, 'Prijs_id');
     }
 
+    public function addToBasket() {
+        
+    }
+
 }

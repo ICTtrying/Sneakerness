@@ -8,11 +8,17 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\StandController;
 use App\Http\Controllers\RegisterUserController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\MandjeController;
 
 // Nu luistert de route op /
 Route::get('/Tickets', [TicketController::class, 'index']);
 Route::post('/add-to-cart', [TicketController::class, 'addToCart']);
+Route::get('/delete-mandje', [TicketController::class, 'deletebasket']);
+Route::get('/loginneeded', [SessionController::class, 'loginneeded']);
 
+
+Route::get('/mandje', [MandjeController::class, 'index']);
+Route::post('/remove-item', [App\Http\Controllers\TicketController::class, 'removeItem'])->name('remove.item');
 
 
 Blade::component('layouts.app', 'layouts.app');

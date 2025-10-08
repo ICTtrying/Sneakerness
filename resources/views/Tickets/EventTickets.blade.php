@@ -19,6 +19,18 @@
     <x-Navbar />
 
     <div class="page">
+        @if (isset($message))
+            <div class="alert bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-6" role="alert"
+                id="flash-message">
+                {{ $message }}
+            </div>
+            <script>
+                setTimeout(function() {
+                    const msg = document.getElementById('flash-message');
+                    if (msg) msg.style.display = 'none';
+                }, 4000);
+            </script>
+        @endif
         <h1 class="text-6xl font-extrabold mb-7 mt-7 text-center">
             Choose Your Event
         </h1>
@@ -32,10 +44,13 @@
                 @foreach ($tickets as $ticket)
                     <form action="/add-to-cart" method="POST" class="ticket-cards">
                         @csrf
-                        <input type="hidden" name="ticket_id" value="{{ $ticket->id }}" required>
+
+                        <input type="hidden" name="event_id" value="{{ $ticket->Evenement_id }}" required>
                         <input type="hidden" name="eventname" value="{{ $ticket->Evenement->Naam }}" required>
                         <input type="hidden" name="date" value="{{ $ticket->Evenement->Datum }}" required>
                         <input type="hidden" name="location" value="{{ $ticket->Evenement->Locatie }}" required>
+                        <input type="hidden" name="price" value="{{ $ticket->Prijs->Tarief }}" required>
+                        
 
                         <div class="event-name-card">
                             <div class="Ticket-Logo-card">
@@ -51,6 +66,9 @@
                             <div class="Ticket-Date-card">
                                 {{ $ticket->Evenement->Datum }}
                             </div>
+                            <div class="Ticket-Date-card">
+                                &euro;{{ number_format($ticket->Prijs->Tarief, 2, ',', '.') }}
+                            </div>
                             <div>
                                 <select name="time" class="Ticket-Time-card">
                                     @for ($hour = 8; $hour <= 20; $hour += 2)
@@ -63,11 +81,18 @@
                                 <input type="number" name="amount" min="1" max="10" value="1"
                                     class="Ticket-Amount-card" />
                             </div>
-                            <div>
-                                <button type="submit"
-                                    class="Ticket-Buy-btn bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-                                    Buy Ticket
-                                </button>
+                            <div class="mt-3">
+                                @guest
+                                    <a href="/loginneeded" class="Ticket-Buy-btn bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                                        In mandje
+                                    </a>
+                                @endguest
+                                @auth
+                                    <button type="submit"
+                                        class="Ticket-Buy-btn bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                                        In mandje
+                                    </button>
+                                @endauth
                             </div>
                         </div>
                     </form>

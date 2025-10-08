@@ -2,46 +2,93 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Basket</title>
+    <title>mandje</title>
+    @vite(['resources/css/app.css'])
 </head>
-<body style="font-family: Arial, sans-serif; background: #f1f1f1;">
-    <div style="max-width: 800px; margin: 30px auto; background: white; padding: 20px;">
-        <h1 style="margin-bottom: 20px;">Your Basket</h1>
 
-        <table style="width: 100%; border-collapse: collapse;">
-            <thead>
-                <tr style="background: #f7f7f7;">
-                    <th style="border: 1px solid #ccc; padding: 8px;">Event</th>
-                    <th style="border: 1px solid #ccc; padding: 8px;">Date</th>
-                    <th style="border: 1px solid #ccc; padding: 8px;">Location</th>
-                    <th style="border: 1px solid #ccc; padding: 8px;">Time Slot</th>
-                    <th style="border: 1px solid #ccc; padding: 8px;">Qty</th>
-                </tr>
-            </thead>
-            <tbody>
-                @if(isset($tickets) && isset($tickets['ticket_id']))
-                    <tr>
-                        <td style="border: 1px solid #ccc; padding: 8px;">{{ $tickets['eventname'] ?? 'N/A' }}</td>
-                        <td style="border: 1px solid #ccc; padding: 8px;">{{ $tickets['date'] ?? 'N/A' }}</td>
-                        <td style="border: 1px solid #ccc; padding: 8px;">{{ $tickets['location'] ?? 'N/A' }}</td>
-                        <td style="border: 1px solid #ccc; padding: 8px;">{{ $tickets['time'] ?? 'N/A' }}</td>
-                        <td style="border: 1px solid #ccc; padding: 8px;">{{ $tickets['amount'] ?? 1 }}</td>
-                    </tr>
-                @else
-                    <tr>
-                        <td colspan="5" style="border: 1px solid #ccc; padding: 8px; text-align: center;">
-                            Your basket is empty.
-                        </td>
-                    </tr>
-                @endif
-            </tbody>
-        </table>
+<body>
+    <div class="basket-container">
+        <h1>Uw mandje</h1>
+        <a href="/delete-mandje" class="clearmandje">Clear mandje</a>
 
-        <div style="margin-top: 20px; text-align: right;">
-            <a href="/Tickets" style="margin-right: 10px; padding: 6px 12px; border: 1px solid #555; text-decoration: none;">Continue Shopping</a>
-            <button style="padding: 6px 12px; background: green; color: white; border: none;">Proceed to Checkout</button>
-        </div>
+        @if (!empty($mandje))
+            <form action="/buy" method="POST" id="basketForm">
+                @csrf
+
+                @foreach ($mandje as $mandjeitem)
+                    <div class="basket-item" data-price="{{ $mandjeitem['price'] }}">
+                        <div class="event-name">{{ $mandjeitem['eventname'] }}</div>
+                        <div>{{ $mandjeitem['date'] }}</div>
+                        <div>{{ $mandjeitem['location'] }}</div>
+                        <div class="price">€{{ number_format($mandjeitem['price'], 2, ',', '.') }}</div>
+
+                        <div class="quantity-input">
+                            <input type="number" name="amount[{{ $mandjeitem['event_id'] }}]"
+                                value="{{ $mandjeitem['amount'] }}" min="1">
+                        </div>
+
+                        <input type="hidden" name="event_id[]" value="{{ $mandjeitem['event_id'] }}">
+
+                        <!-- remove form -->
+                        <form action="{{ route('remove.item') }}" method="POST" style="margin-left:12px;">
+                            @csrf
+                            <input type="hidden" name="event_id" value="{{ $mandjeitem['event_id'] }}">
+                            <!-- als je 'time' in je mandje opslaat, stuur die ook mee -->
+                            @if (isset($mandjeitem['time']))
+                                <input type="hidden" name="time" value="{{ $mandjeitem['time'] }}">
+                            @endif
+                            <button type="submit"
+                                style="background:#ff6b6b;border:none;color:white;padding:6px 8px;border-radius:6px;cursor:pointer;">
+                                Verwijder
+                            </button>
+                        </form>
+                    </div>
+                @endforeach
+
+
+                <div style="margin-top:30px;">
+                    <h2>Fill out your info</h2>
+                    <input type="text" name="name" placeholder="Full Name" class="dummy-input" required>
+                    <input type="text" name="address" placeholder="Address" class="dummy-input" required>
+                    <input type="text" name="city" placeholder="City" class="dummy-input" required>
+                    <input type="text" name="zip" placeholder="ZIP Code" class="dummy-input" required>
+                    <input type="text" name="card" placeholder="Card Number" class="dummy-input" required>
+                </div>
+
+                <div class="basket-footer">
+                    <a href="/Tickets">Continue Shopping</a>
+                    <span id="totalPrice" style="font-weight:600; color:#27ae60; margin-right:12px;">Totaal:
+                        €0,00</span>
+                    <button type="submit">Buy</button>
+                </div>
+            </form>
+
+            <script>
+                const quantityInputs = document.querySelectorAll('.quantity-input input');
+                const totalEl = document.getElementById('totalPrice');
+
+                function updateTotal() {
+                    let total = 0;
+                    quantityInputs.forEach(input => {
+                        const itemDiv = input.closest('.basket-item');
+                        const price = parseFloat(itemDiv.dataset.price) || 0;
+                        total += price * parseInt(input.value || 0);
+                    });
+                    totalEl.textContent = 'Totaal: €' + total.toFixed(2).replace('.', ',');
+                }
+
+                quantityInputs.forEach(input => {
+                    input.addEventListener('input', updateTotal);
+                });
+
+                updateTotal();
+            </script>
+        @else
+            <div>Uw mandje is leeg.</div>
+        @endif
     </div>
 </body>
+
 </html>
