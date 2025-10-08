@@ -29,23 +29,29 @@
                                 value="{{ $mandjeitem['amount'] }}" min="1">
                         </div>
 
-                        <input type="hidden" name="event_id[]" value="{{ $mandjeitem['event_id'] }}">
-
-                        <!-- remove form -->
-                        <form action="{{ route('remove.item') }}" method="POST" style="margin-left:12px;">
-                            @csrf
-                            <input type="hidden" name="event_id" value="{{ $mandjeitem['event_id'] }}">
-                            <!-- als je 'time' in je mandje opslaat, stuur die ook mee -->
-                            @if (isset($mandjeitem['time']))
-                                <input type="hidden" name="time" value="{{ $mandjeitem['time'] }}">
-                            @endif
-                            <button type="submit"
+                        @if (count($mandje) > 1)
+                            <button type="button"
+                                onclick="removeItem('{{ $mandjeitem['event_id'] }}'{{ isset($mandjeitem['time']) ? ', \'' . $mandjeitem['time'] . '\'' : '' }})"
                                 style="background:#ff6b6b;border:none;color:white;padding:6px 8px;border-radius:6px;cursor:pointer;">
                                 Verwijder
                             </button>
-                        </form>
+                        @endif
                     </div>
                 @endforeach
+
+                <script>
+                    function removeItem(eventId, time = null) {
+                        const data = new FormData();
+                        data.append('event_id', eventId);
+                        if (time) data.append('time', time);
+                        data.append('_token', '{{ csrf_token() }}');
+
+                        fetch('/remove-item', {
+                            method: 'POST',
+                            body: data
+                        }).then(() => location.reload());
+                    }
+                </script>
 
 
                 <div style="margin-top:30px;">

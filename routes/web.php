@@ -18,7 +18,7 @@ Route::get('/loginneeded', [SessionController::class, 'loginneeded']);
 
 
 Route::get('/mandje', [MandjeController::class, 'index']);
-Route::post('/remove-item', [App\Http\Controllers\TicketController::class, 'removeItem'])->name('remove.item');
+Route::post('/remove-item', [TicketController::class, 'removeItem'])->name('remove.item');
 
 
 Blade::component('layouts.app', 'layouts.app');
