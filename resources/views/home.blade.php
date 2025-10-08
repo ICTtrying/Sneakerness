@@ -1,4 +1,4 @@
-<x-gitNavbar />
+<x-Navbar />
 
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
