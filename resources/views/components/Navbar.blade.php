@@ -1,3 +1,4 @@
+<!-- Change all `sm:` breakpoints to `md:` so the navbar switches at 850px (md = 768px, closest to 850px in Tailwind) -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,12 +13,11 @@
 </head>
 
 <body>
-    <!-- Include this script tag or install `@tailwindplus/elements` via npm: -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
     <nav class="relative bg-gray-800">
-        <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-7xl px-2 md:px-6 lg:px-8">
             <div class="relative flex h-16 items-center justify-between">
-                <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                <div class="absolute inset-y-0 left-0 flex items-center md:hidden">
                     <!-- Mobile menu button-->
                     <button type="button" command="--toggle" commandfor="mobile-menu"
                         class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-white/5 hover:text-white focus:outline-2 focus:-outline-offset-1 focus:outline-indigo-500">
@@ -30,13 +30,12 @@
                         </svg>
                     </button>
                 </div>
-                <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+                <div class="flex flex-1 items-center justify-center md:items-stretch md:justify-start">
                     <div class="flex shrink-0 items-center">
                         <img src="{{ asset('img/Sneakerlogo3.png') }}" alt="logo" class="h-8 w-auto" />
                     </div>
-                    <div class="hidden sm:ml-6 sm:block">
+                    <div class="hidden md:ml-6 md:block">
                         <div class="flex space-x-4">
-                            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-white/5 hover:text-white" -->
                             <a href="/"
                                 class="rounded-md px-3 py-2 text-sm font-medium {{ request()->is('/') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white' }}">
                                 Home
@@ -55,7 +54,7 @@
                             </a>
                             <a href="/Tickets"
                                 class="rounded-md px-3 py-2 text-sm font-medium {{ request()->is('Tickets') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white' }}">
-                                Buy Tickets
+                                Tickets kopen
                             </a>
                             <a href="/contact"
                                 class="rounded-md px-3 py-2 text-sm font-medium {{ request()->is('contact') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white' }}">
@@ -64,28 +63,35 @@
                         </div>
                     </div>
 
-                    <div class="hidden md:flex ml-auto items-center">
-                        <div class="flex items-center gap-3">
-                            @guest
-                                <a href="/login"
-                                    class="inline-flex items-center rounded-full border border-white/30 bg-white/5 px-4 py-2 text-sm font-semibold text-white transition hover:border-white hover:bg-white/10">
-                                    Log In
-                                </a>
-                                <a href="/register"
-                                    class="inline-flex items-center rounded-full bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-indigo-600/40 transition hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400">
-                                    Register
-                                </a>
-                            @endguest
-                            @auth
-                                <form action="/logout" method="post">
-                                    @csrf
-                                    <button type="submit"
-                                        class="inline-flex items-center rounded-full bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-indigo-600/40 transition hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400">
-                                        Log Out
-                                    </button>
-                                </form>
-                            @endauth
-                        </div>
+                    <div class="hidden md:flex flex-1 items-center justify-center gap-3">
+                        @guest
+                            <a href="/login"
+                                class="inline-flex items-center rounded-full border border-white/30 bg-white/5 px-4 py-2 text-sm font-semibold text-white transition hover:border-white hover:bg-white/10">
+                                Log In
+                            </a>
+                            <a href="/register"
+                                class="inline-flex items-center rounded-full bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-indigo-600/40 transition hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400">
+                                Register
+                            </a>
+                        @endguest
+                        @auth
+                            <a href="/mandje"
+                                class="inline-flex items-center rounded-full border border-white/30 bg-white/5 px-4 py-2 text-sm font-semibold text-white transition hover:border-white hover:bg-white/10">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 2.7A1 1 0 007.6 17h8.8a1 1 0 00.95-.68L21 13M7 13V6h13" />
+                                </svg>
+                                Mandje
+                            </a>
+                            <form action="/logout" method="post">
+                                @csrf
+                                <button type="submit"
+                                    class="rounded-full bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-indigo-600/40 transition hover:bg-indigo-500">
+                                    Log Out
+                                </button>
+                            </form>
+                        @endauth
                     </div>
                 </div>
                 <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
@@ -126,10 +132,13 @@
                 <a href="/verkoper"
                     class="block rounded-md px-3 py-2 text-base font-medium {{ request()->is('verkoper') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white' }}">Verkopers</a>
                 <a href="/Tickets"
-                    class="block rounded-md px-3 py-2 text-base font-medium {{ request()->is('Tickets') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white' }}">Buy
-                    Tickets</a>
+                    class="block rounded-md px-3 py-2 text-base font-medium {{ request()->is('Tickets') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white' }}">Tickets
+                    kopen</a>
                 <a href="/contact"
                     class="block rounded-md px-3 py-2 text-base font-medium {{ request()->is('contact') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white' }}">Contact</a>
+                <a href="/mandje"
+                    class="block rounded-md px-3 py-2 text-base font-medium bg-orange-500 text-white hover:bg-orange-600">Mandje</a>
+            
             </div>
 
             <div class="border-t border-gray-700 px-2 pt-3 pb-3">

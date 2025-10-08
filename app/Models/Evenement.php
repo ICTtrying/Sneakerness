@@ -14,6 +14,7 @@ class Evenement extends Model
     public $timestamps = false;
 
     protected $fillable = [
+        'Id',
         'Naam',
         'Datum',
         'Locatie',

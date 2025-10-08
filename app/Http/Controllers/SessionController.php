@@ -11,6 +11,12 @@ class SessionController extends Controller
         return view('auth.login');
     }
 
+    public function loginneeded() 
+    {
+        $message = 'please log in to continue';
+        return view('auth.login', ['message' => $message]);
+    }
+
     public function store()
     {
         $validated = request()->validate([

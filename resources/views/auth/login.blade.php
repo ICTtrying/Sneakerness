@@ -1,4 +1,14 @@
 <x-Navbar />
+
+
+@if(isset($message) && $message)
+    <div class="container mx-auto max-w-md mt-4">
+        <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-4" role="alert">
+            <span class="block sm:inline">{{ $message }}</span>
+        </div>
+    </div>
+@endif
+
 <div class="container mx-auto max-w-md mt-10 ">
     <h2 class="text-2xl font-bold mb-6 text-center">Login</h2>
     <form method="POST" action="/login" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
