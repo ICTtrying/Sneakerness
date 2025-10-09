@@ -9,7 +9,7 @@ class Stand extends Model
 {
     use HasFactory;
 
-    protected $table = 'stand'; // niet hoofdletter!
+    protected $table = 'Stand'; 
 
     protected $fillable = [
         'StandType',
