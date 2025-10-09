@@ -63,7 +63,7 @@
                         </div>
                     </div>
 
-                    <div class="hidden md:flex flex-1 items-center justify-center gap-3">
+                    <div class="hidden md:flex flex-1 items-center justify-end gap-3">
                         @guest
                             <a href="/login"
                                 class="inline-flex items-center rounded-full border border-white/30 bg-white/5 px-4 py-2 text-sm font-semibold text-white transition hover:border-white hover:bg-white/10">

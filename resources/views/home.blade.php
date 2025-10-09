@@ -1,4 +1,4 @@
-<x-Navbar />
+
 
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
@@ -23,7 +23,7 @@
 data-maintenance="{{ env('APP_MAINTENANCE', 'false') ? 'true' : 'false' }}">
 
     <!-- Navbar -->
-    <x-navbar/>
+    <x-navbar />
 
             <!-- Hero Section -->
             <div class="mx-auto max-w-xl text-center">
