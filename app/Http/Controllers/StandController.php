@@ -18,8 +18,7 @@ class StandController extends Controller
      */
     public function index()
     {
-         $stands = $this->Stand->with('verkoper')->get();
-
+        $stands = Stand::all();
         
 
         return view('stands.index',[
@@ -45,22 +44,27 @@ class StandController extends Controller
          */
         public function store(Request $request)
         {
-            echo 'hello from the homepage';
-            exit;
-            
             $validated = $request->validate([
-                'price' => 'required|numeric|min:100|max:1000',
+                'verkoper_id' => 'required|exists:verkopers,id',
+                'price' => 'required|numeric|min:100|max:5000',
                 'stand_type' => 'required|string|max:255',
                 'days' => 'required|integer|min:1|max:5',
             ]);
 
             // Create and save the stand
             $stand = new Stand();
-            $stand->price = $validated['price'];
-            $stand->stand_type = $validated['stand_type'];
-            $stand->days = $validated['days'];
+
+            $stand->StandType = $validated['stand_type'];
+            $stand->Dagen = $validated['days'];
+            // bereken prijs op basis van stand_type en dagen
+            $stand->Prijs = match ($validated['stand_type']) {
+                'A' => 300 * $validated['days'],
+                'AA' => 500 * $validated['days'],
+                'AA+' => 700 * $validated['days'],
+                default => 0,
+            };
+            
             $stand->save();
-            dd($stand);
 
             return redirect()->route('stands.index')->with('success', "Stand is succesvol toegevoegd");
         }

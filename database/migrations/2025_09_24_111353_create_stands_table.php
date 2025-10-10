@@ -14,7 +14,6 @@ return new class extends Migration
     {
         Schema::create('Stand', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Verkoper::class);
             $table->string('StandType');
             $table->decimal('Prijs', 8, 2);
             $table->boolean('VerhuurdStatus')->default(false);

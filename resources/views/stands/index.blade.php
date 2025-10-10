@@ -44,13 +44,17 @@
                         </tr>
                     @endif
                     <tr>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-200">{{ $stand->verkoper->Naam }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-200">{{ $stand->verkoper->VerkooptSoort  }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-200">
+                            {{ $stand->verkoper ? $stand->verkoper->Naam : 'Beschikbaar' }}
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-200">
+                            {{ $stand->verkoper ? $stand->verkoper->VerkooptSoort : '' }}
+                        </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-200">€{{ $stand->Prijs }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-200">{{ $stand->Dagen }} days</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-200">{{ $stand->StandType }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-200">
-                            @if($stand->VerhuurdStatus == 1 || $stand->verkoper->Naam)
+                            @if($stand->VerhuurdStatus == 1 || $stand->verkoper?->Naam)
                                 Rented
                             @else
                                 Available

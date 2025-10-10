@@ -22,35 +22,10 @@
             @csrf
 
 
-
             <div class="space-y-12">
                 <div class="border-b border-white/10 pb-12">
                     <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-                        <div class="sm:col-span-4">
-                            <label for="seller_category" class="block text-sm/6 font-medium text-white">Seller Category</label>
-                            <div class="mt-2">
-                                <div
-                                    class="flex items-center rounded-md bg-white/5 pl-3 outline-1 -outline-offset-1 outline-white/10 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-500">
-                                    <select id="seller_category" name="seller_category"
-                                        class="block min-w-0 grow bg-transparent py-1.5 pr-1 text-base text-white placeholder:text-gray-500 focus:outline-none sm:text-sm/6">
-                                        <option class="text-black" value="sneakers">Sneakers</option>
-                                        <option class="text-black" value="kleding">Kleding</option>
-                                        <option class="text-black" value="accessoires">Accessoires</option>
-                                        <option class="text-black" value="verzamelobjecten">Verzamelobjecten</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="sm:col-span-4">
-                            <label for="price" class="block text-sm/6 font-medium text-white">Price</label>
-                            <div class="mt-2">
-                                <div
-                                    class="flex items-center rounded-md bg-white/5 pl-3 outline-1 -outline-offset-1 outline-white/10 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-500">
-                                    <input id="price" type="text" name="price" placeholder="Enter Price"
-                                        class="block min-w-0 grow bg-transparent py-1.5 pr-1  text-base text-white placeholder:text-gray-500 focus:outline-none sm:text-sm/6" />
-                                </div>
-                            </div>
-                        </div>
+
 
                         <div class="sm:col-span-4">
                             <label for="stand_type" class="block text-sm/6 font-medium text-white">Stand Type</label>

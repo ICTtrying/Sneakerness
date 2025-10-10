@@ -9,6 +9,7 @@ use App\Http\Controllers\StandController;
 use App\Http\Controllers\RegisterUserController;
 use App\Http\Controllers\SessionController;
 use App\Models\Stand;
+use App\Models\Verkoper;
 
 // Nu luistert de route op /
 Route::get('/Tickets', [TicketController::class, 'index']);
@@ -27,19 +28,25 @@ Route::get('/', [HomeController::class, 'index']);
 
 Route::Post('/', [HomeController::class, 'index']);
 
-Route::get('/Stands', [StandController::class,'index']);
+Route::get('/Stands', [StandController::class,'index'])->name('stands.index');
 
 Route::get('/Stands/create', [StandController::class,'create'])->name('stands.create');
 
 Route::post('/stands', function () {
 
-    Stand::create([
-        'VerkoperSoort' => request('seller_category'),
-        'Prijs' => request('price'),
-        'StandType' => request('stand_type'),
-        'Dagen' => request('days'),
-        'verkoper_id' => 1,
-    ]);
+
+Stand::create([
+    'StandType' => request('stand_type'),
+    'Dagen' => request('days'),
+    'Prijs' => match (request('stand_type')) {
+        'A' => 300 * intval(request('days')),
+        'AA' => 500 * intval(request('days')),
+        'AA+' => 700 * intval(request('days')),
+        default => 0,
+    },
+]);
+
+
 
     return redirect('/Stands')->with('success', 'Stand successfully added');
 });

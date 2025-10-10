@@ -20,8 +20,8 @@ class Stand extends Model
         'Dagen',
     ];
 
-    public function verkoper()
+    public static function getAllStands()
     {
-        return $this->belongsTo(Verkoper::class, 'verkoper_id', 'id');
+        return self::all();
     }
 }

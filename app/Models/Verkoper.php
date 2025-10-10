@@ -20,8 +20,5 @@ class Verkoper extends Model
         'Opmerking',
     ];
 
-    public function stands()
-    {
-        return $this->hasMany(Stand::class, 'verkoper_id', 'id');
-    }
+
 }
