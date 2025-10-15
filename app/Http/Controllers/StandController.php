@@ -44,7 +44,10 @@ class StandController extends Controller
          */
         public function store(Request $request)
         {
-            if ($request->input('days') > 3 ) {
+            if ($request->input('days') == null ) {
+                return redirect()->back()->withErrors(['days' => 'Dagen is verplicht.'])->withInput();
+            }
+            elseif ($request->input('days') > 3 ) {
                 return redirect()->back()->withErrors(['days' => 'Dagen mag niet meer zijn dan 3.'])->withInput();
             }
             elseif ($request->input('days') < 1 ) {
