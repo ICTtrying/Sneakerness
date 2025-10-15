@@ -32,24 +32,7 @@ Route::get('/Stands', [StandController::class,'index'])->name('stands.index');
 
 Route::get('/Stands/create', [StandController::class,'create'])->name('stands.create');
 
-Route::post('/stands', function () {
-
-
-Stand::create([
-    'StandType' => request('stand_type'),
-    'Dagen' => request('days'),
-    'Prijs' => match (request('stand_type')) {
-        'A' => 300 * intval(request('days')),
-        'AA' => 500 * intval(request('days')),
-        'AA+' => 700 * intval(request('days')),
-        default => 0,
-    },
-]);
-
-
-
-    return redirect('/Stands')->with('success', 'Stand successfully added');
-});
+Route::post('/stands', [StandController::class, 'store'])->name('stands.store');
 
 Route::controller(RegisterUserController::class)->group(function () {
     Route::get('/register', 'create');

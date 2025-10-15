@@ -44,38 +44,26 @@ class StandController extends Controller
          */
         public function store(Request $request)
         {
-            if ($request->input('days') > 3 ) {
-                return redirect()->back()->withErrors(['days' => 'Dagen mag niet meer zijn dan 3.'])->withInput();
-            }
-            elseif ($request->input('days') < 1 ) {
-                return redirect()->back()->withErrors(['days' => 'Dagen mag niet minder zijn dan 1.'])->withInput();
-            }
-            else {
             // Validate the request data
-            $validated = $request->validate([
-                'verkoper_id' => 'required|exists:verkopers,id',
-                'price' => 'required|numeric|min:100|max:5000',
+             $request->validate([
                 'stand_type' => 'required|string|max:255',
-                'days' => 'required|integer|min:1|max:5',
+                'days' => 'required|integer|min:1|max:3',
             ]);
 
-            // Create and save the stand
-            $stand = new Stand();
 
-            $stand->StandType = $validated['stand_type'];
-            $stand->Dagen = $validated['days'];
-            // bereken prijs op basis van stand_type en dagen
-            $stand->Prijs = match ($validated['stand_type']) {
-                'A' => 300 * $validated['days'],
-                'AA' => 500 * $validated['days'],
-                'AA+' => 700 * $validated['days'],
+            // Create the stand
+            Stand::create([
+                'StandType' => $request->input('stand_type'),
+                'Dagen' => $request->input('days'),
+                'Prijs' => match ($request->input('stand_type')) {
+                    'A' => 300 * $request->input('days'),
+                    'AA' => 500 * $request->input('days'),
+                    'AA+' => 700 * $request->input('days'),
                 default => 0,
-            };
-            
-            $stand->save();
+                },
+            ]);
 
-            return redirect()->route('stands.index')->with('success', "Stand is succesvol toegevoegd");
-        }
+            return redirect('/stands');
         }
 
     /**
