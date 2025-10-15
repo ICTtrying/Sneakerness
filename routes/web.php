@@ -21,7 +21,7 @@ Blade::component('layouts.app', 'layouts.app');
 
 Route::get('/contact', [ContactController::class, 'index']);
 
-Route::get('/verkoper', [VerkoperController::class, 'index'])->name('verkoper.index');
+Route::get('/verkoper', [VerkoperController::class, 'index'])->name('verkoper.verkoper');
 
 Route::get('/', [HomeController::class, 'index']);
 
