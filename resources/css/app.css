@@ -1,0 +1,105 @@
+@import 'tailwindcss';
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.basket-container {
+    max-width: 800px;
+    margin: 30px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    position: relative;
+    /* <- belangrijk */
+}
+
+.clearmandje {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    background: #e74c3c;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    display: inline-block;
+    z-index: 10;
+    font-weight: 600;
+}
+
+h1 {
+    margin: 0 0 18px 0;
+}
+
+/* voorkomt overlap met knop */
+.basket-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff8f0;
+    border: 1.5px solid #ffd6a5;
+    border-radius: 14px;
+    margin-bottom: 18px;
+    padding: 18px 28px;
+}
+
+.basket-item div {
+    flex: 1;
+    color: #555;
+}
+
+.event-name {
+    flex: 2;
+    font-weight: 600;
+    color: #ff7f50;
+    font-size: 1.2em;
+}
+
+.price {
+    color: #27ae60;
+    font-weight: 500;
+    font-size: 1.1em;
+}
+
+.quantity-input input {
+    width: 60px;
+    text-align: center;
+    background: #ffe5d9;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 4px;
+}
+
+.basket-footer {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.basket-footer button,
+.basket-footer a {
+    padding: 6px 12px;
+    border-radius: 6px;
+    margin-left: 10px;
+    text-decoration: none;
+}
+
+.basket-footer button {
+    background: green;
+    color: white;
+    border: none;
+}
+
+.basket-footer a {
+    border: 1px solid #555;
+    background: white;
+    color: #333;
+}
+
+.dummy-input {
+    width: 100%;
+    padding: 6px 10px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
