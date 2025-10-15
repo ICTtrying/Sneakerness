@@ -48,9 +48,9 @@
                                 class="rounded-md px-3 py-2 text-sm font-medium {{ request()->is('events') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white' }}">
                                 Events
                             </a>
-                            <a href="/vendors"
-                                class="rounded-md px-3 py-2 text-sm font-medium {{ request()->is('vendors') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white' }}">
-                                Vendors
+                            <a href="/verkoper"
+                                class="rounded-md px-3 py-2 text-sm font-medium {{ request()->is('verkoper') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white' }}">
+                                Verkoper
                             </a>
                             <a href="/Tickets"
                                 class="rounded-md px-3 py-2 text-sm font-medium {{ request()->is('Tickets') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white' }}">
@@ -130,7 +130,7 @@
                 <a href="/Evenementen"
                     class="block rounded-md px-3 py-2 text-base font-medium {{ request()->is('Evenementen') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white' }}">Evenementen</a>
                 <a href="/verkoper"
-                    class="block rounded-md px-3 py-2 text-base font-medium {{ request()->is('verkoper') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white' }}">Verkopers</a>
+                    class="block rounded-md px-3 py-2 text-base font-medium {{ request()->is('verkoper') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white' }}">Verkoper</a>
                 <a href="/Tickets"
                     class="block rounded-md px-3 py-2 text-base font-medium {{ request()->is('Tickets') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white' }}">Tickets
                     kopen</a>
