@@ -8,6 +8,6 @@ class VerkoperController extends Controller
 {
     public function index()
     {
-        return view('verkoper.verkoper');
+        return view('vendors.index');
     }
 }

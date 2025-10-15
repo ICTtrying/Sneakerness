@@ -8,18 +8,12 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\StandController;
 use App\Http\Controllers\RegisterUserController;
 use App\Http\Controllers\SessionController;
-use App\Models\Stand;
-use App\Http\Controllers\MandjeController;
+
 
 // Nu luistert de route op /
 Route::get('/Tickets', [TicketController::class, 'index']);
 Route::post('/add-to-cart', [TicketController::class, 'addToCart']);
-Route::get('/delete-mandje', [TicketController::class, 'deletebasket']);
-Route::get('/loginneeded', [SessionController::class, 'loginneeded']);
 
-
-Route::get('/mandje', [MandjeController::class, 'index']);
-Route::post('/remove-item', [TicketController::class, 'removeItem'])->name('remove.item');
 
 
 Blade::component('layouts.app', 'layouts.app');
@@ -27,34 +21,17 @@ Blade::component('layouts.app', 'layouts.app');
 
 Route::get('/contact', [ContactController::class, 'index']);
 
-Route::get('/verkoper', [VerkoperController::class, 'index']);
+Route::get('/vendors', [VerkoperController::class, 'index'])->name('vendors.index');
 
 Route::get('/', [HomeController::class, 'index']);
 
 Route::Post('/', [HomeController::class, 'index']);
 
-Route::get('/Stands', [StandController::class,'index'])->name('stands.index');
+Route::get('/stands', [StandController::class,'index'])->name('stands.index');
 
 Route::get('/Stands/create', [StandController::class,'create'])->name('stands.create');
 
-Route::post('/stands', function () {
-
-
-Stand::create([
-    'StandType' => request('stand_type'),
-    'Dagen' => request('days'),
-    'Prijs' => match (request('stand_type')) {
-        'A' => 300 * intval(request('days')),
-        'AA' => 500 * intval(request('days')),
-        'AA+' => 700 * intval(request('days')),
-        default => 0,
-    },
-]);
-
-
-
-    return redirect('/Stands')->with('success', 'Stand successfully added');
-});
+Route::post('/stands', [StandController::class, 'store'])->name('stands.store');
 
 Route::controller(RegisterUserController::class)->group(function () {
     Route::get('/register', 'create');
