@@ -44,6 +44,14 @@ class StandController extends Controller
          */
         public function store(Request $request)
         {
+            if ($request->input('days') > 3 ) {
+                return redirect()->back()->withErrors(['days' => 'Dagen mag niet meer zijn dan 3.'])->withInput();
+            }
+            elseif ($request->input('days') < 1 ) {
+                return redirect()->back()->withErrors(['days' => 'Dagen mag niet minder zijn dan 1.'])->withInput();
+            }
+            else {
+            // Validate the request data
             $validated = $request->validate([
                 'verkoper_id' => 'required|exists:verkopers,id',
                 'price' => 'required|numeric|min:100|max:5000',
@@ -67,6 +75,7 @@ class StandController extends Controller
             $stand->save();
 
             return redirect()->route('stands.index')->with('success', "Stand is succesvol toegevoegd");
+        }
         }
 
     /**
