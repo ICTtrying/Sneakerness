@@ -45,13 +45,13 @@
                                 class="rounded-md px-3 py-2 text-sm font-medium {{ request()->is('Stands') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white' }}">
                                 Stands
                             </a>
-                            <a href="/Evenementen"
-                                class="rounded-md px-3 py-2 text-sm font-medium {{ request()->is('Evenementen') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white' }}">
-                                Evenementen
+                            <a href="/events"
+                                class="rounded-md px-3 py-2 text-sm font-medium {{ request()->is('events') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white' }}">
+                                Events
                             </a>
-                            <a href="/verkoper"
-                                class="rounded-md px-3 py-2 text-sm font-medium {{ request()->is('verkoper') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white' }}">
-                                Verkopers
+                            <a href="/vendors"
+                                class="rounded-md px-3 py-2 text-sm font-medium {{ request()->is('vendors') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white' }}">
+                                Vendors
                             </a>
                             <a href="/Tickets"
                                 class="rounded-md px-3 py-2 text-sm font-medium {{ request()->is('Tickets') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white' }}">
