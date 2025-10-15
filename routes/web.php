@@ -8,6 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\StandController;
 use App\Http\Controllers\RegisterUserController;
 use App\Http\Controllers\SessionController;
+use App\Models\Stand;
 use App\Http\Controllers\MandjeController;
 
 // Nu luistert de route op /
@@ -31,7 +32,29 @@ Route::get('/verkoper', [VerkoperController::class, 'index']);
 Route::get('/', [HomeController::class, 'index']);
 
 Route::Post('/', [HomeController::class, 'index']);
-Route::get('/Stands', [StandController::class,'index']);
+
+Route::get('/Stands', [StandController::class,'index'])->name('stands.index');
+
+Route::get('/Stands/create', [StandController::class,'create'])->name('stands.create');
+
+Route::post('/stands', function () {
+
+
+Stand::create([
+    'StandType' => request('stand_type'),
+    'Dagen' => request('days'),
+    'Prijs' => match (request('stand_type')) {
+        'A' => 300 * intval(request('days')),
+        'AA' => 500 * intval(request('days')),
+        'AA+' => 700 * intval(request('days')),
+        default => 0,
+    },
+]);
+
+
+
+    return redirect('/Stands')->with('success', 'Stand successfully added');
+});
 
 Route::controller(RegisterUserController::class)->group(function () {
     Route::get('/register', 'create');

@@ -9,7 +9,7 @@ class Stand extends Model
 {
     use HasFactory;
 
-    protected $table = 'Stand'; 
+    protected $table = 'Stand'; // niet hoofdletter!
 
     protected $fillable = [
         'StandType',
@@ -20,8 +20,8 @@ class Stand extends Model
         'Dagen',
     ];
 
-    public function verkoper()
+    public static function getAllStands()
     {
-        return $this->belongsTo(Verkoper::class, 'verkoper_id', 'id');
+        return self::all();
     }
 }

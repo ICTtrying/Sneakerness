@@ -18,8 +18,7 @@ class StandController extends Controller
      */
     public function index()
     {
-         $stands = $this->Stand->with('verkoper')->get();
-
+        $stands = Stand::all();
         
 
         return view('stands.index',[
@@ -34,19 +33,50 @@ class StandController extends Controller
          */
         public function create()
         {
-        return view('stands.create',[
-            'title' => 'Reserve a stand',
-            'message' => 'Fill in the details below to reserve a stand.'
-        ]);
+            return view('stands.create', [
+                'title' => 'Add Stand',
+                'message' => 'Welcome to the add stand page'
+            ]);
         }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        /**
+         * Store a newly created resource in storage.
+         */
+        public function store(Request $request)
+        {
+            if ($request->input('days') > 3 ) {
+                return redirect()->back()->withErrors(['days' => 'Dagen mag niet meer zijn dan 3.'])->withInput();
+            }
+            elseif ($request->input('days') < 1 ) {
+                return redirect()->back()->withErrors(['days' => 'Dagen mag niet minder zijn dan 1.'])->withInput();
+            }
+            else {
+            // Validate the request data
+            $validated = $request->validate([
+                'verkoper_id' => 'required|exists:verkopers,id',
+                'price' => 'required|numeric|min:100|max:5000',
+                'stand_type' => 'required|string|max:255',
+                'days' => 'required|integer|min:1|max:5',
+            ]);
+
+            // Create and save the stand
+            $stand = new Stand();
+
+            $stand->StandType = $validated['stand_type'];
+            $stand->Dagen = $validated['days'];
+            // bereken prijs op basis van stand_type en dagen
+            $stand->Prijs = match ($validated['stand_type']) {
+                'A' => 300 * $validated['days'],
+                'AA' => 500 * $validated['days'],
+                'AA+' => 700 * $validated['days'],
+                default => 0,
+            };
+            
+            $stand->save();
+
+            return redirect()->route('stands.index')->with('success', "Stand is succesvol toegevoegd");
+        }
+        }
 
     /**
      * Display the specified resource.

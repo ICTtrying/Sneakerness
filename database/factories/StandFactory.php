@@ -18,11 +18,15 @@ class StandFactory extends Factory
     public function definition(): array
     {
         return [
-            'verkoper_id' => Verkoper::factory(),
-            'StandType' => $this->faker->randomElement(['A', 'AA', 'AA+']),
-            'Dagen' => fake()->randomNumber(5),
-            'Prijs' => $this->faker->randomFloat(2, 0, 1000),
-            'VerhuurdStatus' => $this->faker->boolean() ? 1 : 0,
+            'StandType' => $standType = $this->faker->randomElement(['A', 'AA', 'AA+']),
+            'Dagen' => $dagen = $this->faker->randomFloat(0, 1, 3),
+            'Prijs' => match ($standType) {
+                'A' => 300 * $dagen,
+                'AA' => 500 * $dagen,
+                'AA+' => 700 * $dagen,
+                default => 0,
+            },
+            'VerhuurdStatus' => empty($stand->verkoper->Naam) ? 0 : ($this->faker->boolean() ? 1 : 0),
             'created_at' => now(),
             'updated_at' => now(),
         ];
