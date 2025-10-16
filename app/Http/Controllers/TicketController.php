@@ -12,6 +12,12 @@ class TicketController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
+    public function __construct()
+    {
+        $tickets = Ticket::all();
+        view()->share('tickets', $tickets);
+    }
     public function index()
     {
         // Get all tickets with related models
@@ -52,7 +58,7 @@ class TicketController extends Controller
 
         $message = 'Ticket succesvol toegevoegd aan uw mandje';
 
-        $tickets = ticket::all();
+        $tickets = Ticket::all();
 
         return view('Tickets.EventTickets', ['message' => $message, 'tickets' => $tickets]);
     }
@@ -87,6 +93,6 @@ class TicketController extends Controller
     public function loginneeded()
     {
         $message = 'Je moet ingelogd zijn om tickets te kopen.';
-        return view('Tickets.EventTickets', ['message' => $message]);
+        return redirect()->route('auth.login')->with('message', $message);
     }
 }

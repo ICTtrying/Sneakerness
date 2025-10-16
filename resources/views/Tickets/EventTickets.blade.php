@@ -24,6 +24,7 @@
                 id="flash-message">
                 {{ $message }}
             </div>
+            
             <script>
                 setTimeout(function() {
                     const msg = document.getElementById('flash-message');

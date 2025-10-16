@@ -15,7 +15,7 @@ use App\Http\Controllers\MandjeController;
 Route::get('/Tickets', [TicketController::class, 'index']);
 Route::post('/add-to-cart', [TicketController::class, 'addToCart']);
 Route::get('/delete-basket', [TicketController::class, 'deletebasket']);
-Route::get('/loginneeded', [TicketController::class, 'loginneeded']);
+Route::get('/loginneeded', [SessionController::class, 'loginneeded'])->name('auth.login');
 Route::get('/mandje', [MandjeController::class, 'index']);
 Route::get('/remove-item', [MandjeController::class, 'removeItem']);
 
