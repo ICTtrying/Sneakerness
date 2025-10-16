@@ -8,11 +8,16 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\StandController;
 use App\Http\Controllers\RegisterUserController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\MandjeController;
 
 
 // Nu luistert de route op /
 Route::get('/Tickets', [TicketController::class, 'index']);
 Route::post('/add-to-cart', [TicketController::class, 'addToCart']);
+Route::get('/delete-basket', [TicketController::class, 'deletebasket']);
+Route::get('/loginneeded', [TicketController::class, 'loginneeded']);
+Route::get('/mandje', [MandjeController::class, 'index']);
+Route::get('/remove-item', [MandjeController::class, 'removeItem']);
 
 
 

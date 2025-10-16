@@ -11,7 +11,7 @@
 <body>
     <div class="basket-container">
         <h1>Uw mandje</h1>
-        <a href="/delete-mandje" class="clearmandje">Clear mandje</a>
+        <a href="/delete-basket" class="clearmandje">Clear mandje</a>
 
         @if (!empty($mandje))
             <form action="/buy" method="POST" id="basketForm">

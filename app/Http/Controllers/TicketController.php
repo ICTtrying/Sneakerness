@@ -83,4 +83,10 @@ class TicketController extends Controller
 
         return redirect('/mandje');
     }
+
+    public function loginneeded()
+    {
+        $message = 'Je moet ingelogd zijn om tickets te kopen.';
+        return view('Tickets.EventTickets', ['message' => $message]);
+    }
 }
