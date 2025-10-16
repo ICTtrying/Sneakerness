@@ -83,7 +83,9 @@
                             </div>
                             <div class="mt-3">
                                 @guest
-                                
+                                    <a href="/loginneeded" class="Ticket-Buy-btn bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                                        In mandje
+                                    </a>
                                 @endguest
                                 @auth
                                     <button type="submit"
