@@ -38,6 +38,8 @@ Route::get('/Stands/create', [StandController::class,'create'])->name('stands.cr
 
 Route::post('/stands', [StandController::class, 'store'])->name('stands.store');
 
+Route::delete('/stands/{stand}', [StandController::class, 'destroy'])->name('stands.destroy');
+
 Route::controller(RegisterUserController::class)->group(function () {
     Route::get('/register', 'create');
     Route::post('/register', 'store');

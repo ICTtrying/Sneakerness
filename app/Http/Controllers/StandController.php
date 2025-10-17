@@ -23,7 +23,7 @@ class StandController extends Controller
 
         return view('stands.index',[
             'title' => 'Stands',
-            'message' => 'Welcome to the stands page',
+            'message' => 'Welkom bij de stands pagina',
             'stands' => $stands
         ]);
         }
@@ -93,8 +93,9 @@ class StandController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Stand $standModel)
+    public function destroy(Stand $stand)
     {
-        //
+        $stand->delete();
+        return redirect()->route('stands.index')->with('success', 'Stand succesvol verwijderd.');
     }
 }
